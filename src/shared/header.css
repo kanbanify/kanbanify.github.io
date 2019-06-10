@@ -1,0 +1,18 @@
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+header .profile img {
+    width: 25px;
+    border-radius: 100%;
+}
+
+header .profile span {
+    padding: 0px 10px;
+}
