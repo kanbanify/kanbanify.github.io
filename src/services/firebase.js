@@ -18,3 +18,4 @@ export const boardsRef = db.ref('boards');
 export const boardsByUserRef = db.ref('boardsByUser');
 export const usersByBoardRef = db.ref('usersByBoard');
 export const invitesByUserRef = db.ref('invitesByUser');
+export const listsByBoardRef = db.ref('listsByBoard');
