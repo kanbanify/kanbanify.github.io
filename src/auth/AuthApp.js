@@ -1,4 +1,6 @@
 import Component from '../Component.js';
+import Header from '../shared/Header.js';
+
 import { auth, usersRef } from '../services/firebase.js';
 
 const ui = new firebaseui.auth.AuthUI(auth);
@@ -7,6 +9,10 @@ class AuthApp extends Component {
 
     render() {
         const dom = this.renderDOM();
+
+        const header = new Header({ title: 'Authorization' });
+
+        dom.prepend(header.render());
 
         ui.start('#firebaseui-auth-container', {
             callbacks: {
