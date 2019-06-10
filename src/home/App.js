@@ -3,6 +3,7 @@ import Header from '../shared/Header.js';
 import AddBoard from './AddBoard.js';
 import BoardList from './BoardList.js';
 
+import { getBoardsFromKeys } from '../services/actions.js';
 import { auth, boardsRef, boardsByUserRef, usersByBoardRef } from '../services/firebase.js';
 
 class App extends Component {
@@ -20,14 +21,10 @@ class App extends Component {
             const value = snapshot.val();
             const boardKeys = value ? Object.values(value) : [];
 
-            const boards = [];
-            boardKeys.forEach(boardKey => {
-                boardsRef.child(boardKey.key).once('value', snapshot => {
-                    const val = snapshot.val();
-                    boards.push(val);
-                    boardList.update({ boards });
-                });
+            getBoardsFromKeys(boardKeys).then(boards => {
+                boardList.update({ boards });
             });
+
         });
 
 
