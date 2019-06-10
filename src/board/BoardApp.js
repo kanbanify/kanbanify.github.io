@@ -1,8 +1,11 @@
 import Component from '../Component.js';
 import SendInvite from './SendInvite.js';
+import AddList from './AddList.js';
+
 import QUERY from '../utils/QUERY.js';
 
-import { usersRef, invitesByUserRef } from '../services/firebase.js';
+import { usersRef, invitesByUserRef, listsByBoardRef } 
+    from '../services/firebase.js';
 
 class BoardApp extends Component {
 
@@ -26,8 +29,21 @@ class BoardApp extends Component {
             }
         });
 
-        dom.appendChild(sendInvite.render());
+        const addList = new AddList({
+            onAddList: list => {
+                console.log(list);
+                
+                const listRef = listsByBoardRef.child(boardKey).push();
+                listRef.set({
+                    key: listRef.key,
 
+                });
+            }
+        });
+
+        dom.appendChild(sendInvite.render());
+        dom.appendChild(addList.render());
+        
         return dom;
     }
 
