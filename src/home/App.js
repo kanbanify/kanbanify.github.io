@@ -1,6 +1,7 @@
 import Component from '../Component.js';
 import Header from '../shared/Header.js';
 import AddBoard from './AddBoard.js';
+import BoardList from './BoardList.js';
 
 import { auth, boardsRef, boardsByUserRef, usersByBoardRef } from '../services/firebase.js';
 
@@ -12,6 +13,22 @@ class App extends Component {
         const main = dom.querySelector('main');
 
         const header = new Header({ title: 'Home' });
+
+        const boardList = new BoardList({ boards: [] });
+
+        boardsByUserRef.child(auth.currentUser.uid).on('value', snapshot => {
+            const value = snapshot.val();
+            const boardKeys = value ? Object.values(value) : [];
+
+            const boards = [];
+            boardKeys.forEach(boardKey => {
+                boardsRef.child(boardKey.key).once('value', snapshot => {
+                    const val = snapshot.val();
+                    boards.push(val);
+                    boardList.update({ boards });
+                });
+            });
+        });
 
 
         const addBoard = new AddBoard({ 
@@ -39,6 +56,7 @@ class App extends Component {
 
         dom.prepend(header.render());
         main.appendChild(addBoard.render());
+        main.appendChild(boardList.render());
 
         return dom;
     }
