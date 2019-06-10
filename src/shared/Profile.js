@@ -7,6 +7,12 @@ class Profile extends Component {
         const dom = this.renderDOM();
         const button = dom.querySelector('button');
 
+        const user = this.props.user;
+
+        if(!user) {
+            return dom;
+        }
+
         button.addEventListener('click', () => {
             auth.signOut();
         });
