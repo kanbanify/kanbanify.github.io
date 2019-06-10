@@ -33,7 +33,6 @@ class App extends Component {
 
         const addBoard = new AddBoard({ 
             onAddBoard: name => {
-                console.log(name);
                 const boardRef = boardsRef.push();
                 boardRef.set({ 
                     name,
