@@ -14,11 +14,9 @@ class InvitesList extends Component {
             const invitesItem = new InvitesItem({ 
                 board,
                 onDecline: invite => {
-                    console.log(invite.key);
                     invitesByUserRef.child(auth.currentUser.uid).child(invite.key).remove();
                 },
                 onAccept: invite => {
-                    console.log(invite.key);
                     boardsByUserRef.child(auth.currentUser.uid).child(invite.key).set({ 
                         key: invite.key
                     });
