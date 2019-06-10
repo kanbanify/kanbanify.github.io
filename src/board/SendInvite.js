@@ -20,7 +20,7 @@ class SendInvite extends Component {
         return /*html*/`
             <form>
                 <input>
-                <button>send</button>
+                <button>Send Invite</button>
             </form>
         `;
     }
