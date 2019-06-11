@@ -17,7 +17,7 @@ class BoardLists extends Component {
         }
 
         lists.forEach(list => {
-            const boardList = new BoardList({ list });
+            const boardList = new BoardList({ list, board });
             dom.appendChild(boardList.render());
         });
 
