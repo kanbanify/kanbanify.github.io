@@ -8,7 +8,9 @@ class BoardList extends Component {
 
     render() {
         const dom = this.renderDOM();
+        
         const cardList = dom.querySelector('ul');
+        const listSection = dom.querySelector('.list-section');
 
         const list = this.props.list;
         const board = this.props.board;
@@ -46,7 +48,7 @@ class BoardList extends Component {
                 });
             });
 
-        dom.appendChild(addCard.render());
+        listSection.appendChild(addCard.render());
 
         return dom;
     }
@@ -55,8 +57,10 @@ class BoardList extends Component {
         const list = this.props.list;
         return /*html*/`
             <li class="board-list">
-                <h2 class="list-title">${list.name}</h2>
-                <ul></ul>
+                <section class="list-section">
+                    <h2 class="list-title">${list.name}</h2>
+                    <ul></ul>
+                </section>
             </li>
         `;
     }
