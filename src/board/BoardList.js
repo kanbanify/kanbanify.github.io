@@ -39,7 +39,7 @@ class BoardList extends Component {
         cardsByListRef
             .child(list.key)
             .orderByChild('position')
-            .on('value', snapshot => {
+            .once('value', snapshot => {
                 const cards = [];
                 snapshot.forEach(child => {
                     cards.push(child.val());
