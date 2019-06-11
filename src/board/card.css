@@ -7,8 +7,35 @@
     margin: 3px;
     padding: 3px;
     font-size: .8em;
+    position: relative;
 }
 
 .card p {
     margin: 0;
 }
+
+.menu-button {
+    display: none;
+    height: 18px;
+    width: 18px;
+    font-weight: 900;
+    font-size: 1em;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    background: transparent;
+    border-radius: 100%;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    background-color: rgb(177, 177, 177);
+    transition: .5s;
+}
+
+.card:hover > .menu-button {
+    display: block;
+} 
