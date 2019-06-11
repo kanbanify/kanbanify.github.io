@@ -1,19 +1,32 @@
 import Component from '../Component.js';
 import TripleDotButton from '../shared/TripleDotButton.js';
+import CardMenu from './CardMenu.js';
 
 class Card extends Component {
 
     render() {
         const dom = this.renderDOM();
 
-        const tripleDotButton = new TripleDotButton({
-            onClick: () => {
-                
+        const onCardMenuClick = this.props.onCardMenuClick;
+
+        const cardMenu = new CardMenu({
+            onClickAway: () => {
+                dom.removeChild(cardMenuDOM);
             }
         });
-
-        dom.appendChild(tripleDotButton.render());
+        const cardMenuDOM = cardMenu.render();
         
+        const tripleDotButton = new TripleDotButton({ 
+            onClick: () => {
+                // dom.appendChild(cardMenuDOM);
+                onCardMenuClick();
+            }
+        });
+        
+        const tripleDotButtonDOM = tripleDotButton.render();
+
+        dom.appendChild(tripleDotButtonDOM);
+
         return dom;
     }
 

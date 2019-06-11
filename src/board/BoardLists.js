@@ -11,13 +11,14 @@ class BoardLists extends Component {
 
         const lists = this.props.lists;
         const board = this.props.board;
+        const onCardMenuClick = this.props.onCardMenuClick;
 
         if(!lists) {
             return dom;
         }
 
         lists.forEach(list => {
-            const boardList = new BoardList({ list, board });
+            const boardList = new BoardList({ list, board, onCardMenuClick });
             dom.appendChild(boardList.render());
         });
 

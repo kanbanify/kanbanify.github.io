@@ -15,6 +15,8 @@ class BoardList extends Component {
         const list = this.props.list;
         const board = this.props.board;
 
+        const onCardMenuClick = this.props.onCardMenuClick;
+
         if(!list) {
             return dom;
         }
@@ -43,7 +45,10 @@ class BoardList extends Component {
                     cards.push(child.val());
                 });
                 cards.forEach(cardData => {
-                    const card = new Card({ cardData });
+                    const card = new Card({ 
+                        cardData,
+                        onCardMenuClick
+                    });
                     cardList.appendChild(card.render());
                 });
             });

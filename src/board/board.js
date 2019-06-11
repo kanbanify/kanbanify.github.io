@@ -11,12 +11,13 @@ class Board extends Component {
 
         const board = this.props.board;
         const lists = this.props.lists;
+        const onCardMenuClick = this.props.onCardMenuClick;
 
         if(!board) {
             return dom;
         }
 
-        const boardLists = new BoardLists({ lists, board });
+        const boardLists = new BoardLists({ lists, board, onCardMenuClick });
 
         const sendInvite = new SendInvite({
             onSendInvite: (email) => {
