@@ -1,6 +1,7 @@
 import Component from '../Component.js';
 import SendInvite from './SendInvite.js';
 import AddList from './AddList.js';
+import BoardLists from './BoardLists.js';
 
 import { usersRef, invitesByUserRef, listsByBoardRef, boardsRef }
     from '../services/firebase.js';
@@ -11,10 +12,13 @@ class Board extends Component {
         const dom = this.renderDOM();
 
         const board = this.props.board;
+        const lists = this.props.lists;
 
         if(!board) {
             return dom;
         }
+
+        const boardLists = new BoardLists({ lists });
 
         const sendInvite = new SendInvite({
             onSendInvite: (email) => {
@@ -49,6 +53,8 @@ class Board extends Component {
         });
 
         dom.appendChild(sendInvite.render());
+
+        dom.appendChild(boardLists.render());
 
         dom.appendChild(addList.render());
         

@@ -3,7 +3,7 @@ import Board from './Board.js';
 
 import QUERY from '../utils/QUERY.js';
 
-import { boardsRef } from '../services/firebase.js';
+import { boardsRef, listsByBoardRef } from '../services/firebase.js';
 
 class BoardApp extends Component {
 
@@ -15,8 +15,15 @@ class BoardApp extends Component {
         const board = new Board({});
 
         boardsRef.child(boardKey).on('value', snapshot => {
-            const value = snapshot.val();
-            board.update({ board: value });
+            const boardInfo = snapshot.val();
+            listsByBoardRef.child(boardInfo.key).orderByChild('position').once('value', snapshot => {
+                const lists = [];
+                snapshot.forEach(child => {
+                    lists.push(child.val());
+                });
+                board.update({ board: boardInfo, lists });
+            });
+
         });
 
         dom.appendChild(board.render());
