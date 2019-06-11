@@ -1,4 +1,5 @@
 import Component from '../Component.js';
+import Header from '../shared/Header.js';
 import Board from './Board.js';
 
 import QUERY from '../utils/QUERY.js';
@@ -11,6 +12,8 @@ class BoardApp extends Component {
         const dom = this.renderDOM();
 
         const boardKey = QUERY.parse(window.location.search).key;
+
+        const header = new Header();
 
         const board = new Board({});
 
@@ -26,6 +29,7 @@ class BoardApp extends Component {
 
         });
 
+        dom.prepend(header.render());
         dom.appendChild(board.render());
    
         return dom;
