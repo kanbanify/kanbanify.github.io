@@ -16,7 +16,7 @@ class BoardApp extends Component {
 
         boardsRef.child(boardKey).on('value', snapshot => {
             const boardInfo = snapshot.val();
-            listsByBoardRef.child(boardInfo.key).orderByChild('position').once('value', snapshot => {
+            listsByBoardRef.child(boardInfo.key).orderByChild('position').on('value', snapshot => {
                 const lists = [];
                 snapshot.forEach(child => {
                     lists.push(child.val());
