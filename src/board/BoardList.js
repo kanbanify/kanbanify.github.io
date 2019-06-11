@@ -1,5 +1,6 @@
 import Component from '../Component.js';
 import AddCard from './AddCard.js';
+import Card from './Card.js';
 
 import { cardsByListRef, listsByBoardRef } from '../services/firebase.js';
 
@@ -7,6 +8,7 @@ class BoardList extends Component {
 
     render() {
         const dom = this.renderDOM();
+        const cardList = dom.querySelector('ul');
 
         const list = this.props.list;
         const board = this.props.board;
@@ -17,7 +19,7 @@ class BoardList extends Component {
 
         const addCard = new AddCard({
             onAddCard: content => {
-                const cardRef = cardsByListRef.push();
+                const cardRef = cardsByListRef.child(list.key).push();
                 cardRef.set({
                     key: cardRef.key,
                     content,
@@ -29,6 +31,20 @@ class BoardList extends Component {
                     .update({ cardCount: list.cardCount + 1 });
             }
         });
+
+        cardsByListRef
+            .child(list.key)
+            .orderByChild('position')
+            .on('value', snapshot => {
+                const cards = [];
+                snapshot.forEach(child => {
+                    cards.push(child.val());
+                });
+                cards.forEach(cardData => {
+                    const card = new Card({ cardData });
+                    cardList.appendChild(card.render());
+                });
+            });
 
         dom.appendChild(addCard.render());
 
