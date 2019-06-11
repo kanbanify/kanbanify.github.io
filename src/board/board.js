@@ -2,7 +2,7 @@ import Component from '../Component.js';
 import SendInvite from './SendInvite.js';
 import AddList from './AddList.js';
 
-import { usersRef, invitesByUserRef, listsByBoardRef }
+import { usersRef, invitesByUserRef, listsByBoardRef, boardsRef }
     from '../services/firebase.js';
 
 class Board extends Component {
@@ -33,12 +33,17 @@ class Board extends Component {
 
         const addList = new AddList({
             onAddList: list => {
-                console.log(list);
 
                 const listRef = listsByBoardRef.child(board.key).push();
                 listRef.set({
                     key: listRef.key,
-
+                    position: board.listCount + 1,
+                    name: list,
+                    cardCount: 0
+                });
+                
+                boardsRef.child(board.key).update({
+                    listCount: board.listCount + 1
                 });
             }
         });

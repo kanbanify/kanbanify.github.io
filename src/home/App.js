@@ -34,7 +34,8 @@ class App extends Component {
                 boardRef.set({ 
                     name,
                     key: boardRef.key,
-                    owner: auth.currentUser.uid
+                    owner: auth.currentUser.uid,
+                    listCount: 0
                 });
 
                 const userBoardRef = boardsByUserRef.child(auth.currentUser.uid).child(boardRef.key);
