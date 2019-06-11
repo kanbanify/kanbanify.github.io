@@ -21,6 +21,7 @@ class Header extends Component {
 
         return /*html*/`
             <header>
+                <img class="logo" src="./assets/kanbanify logo.png">
                 <h1>${title}</h1>
             </header>
         `;
