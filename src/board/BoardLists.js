@@ -45,7 +45,7 @@ class BoardLists extends Component {
 
     renderTemplate() {
         return /*html*/`
-            <ul></ul>
+            <ul class="board-lists"></ul>
         `;
     }
 }
