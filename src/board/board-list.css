@@ -1,0 +1,14 @@
+.board-list {
+    width: 250px;
+    background: lightgray;
+    margin-right: 15px;
+}
+
+.list-title {
+    color: white;
+    font-size: 1em;
+    background: rgb(187, 187, 187);
+    margin: 0;
+    padding: 3px 5px;
+}
+
