@@ -5,7 +5,7 @@ import CardMenu from './CardMenu.js';
 
 import QUERY from '../utils/QUERY.js';
 
-import { boardsRef, listsByBoardRef } from '../services/firebase.js';
+import { boardsRef, listsByBoardRef, cardsByListRef } from '../services/firebase.js';
 
 class BoardApp extends Component {
 
@@ -18,15 +18,36 @@ class BoardApp extends Component {
 
         const board = new Board({});
 
-        const cardMenu = new CardMenu({
-            onClickAway: () => {
-                dom.removeChild(cardMenuDOM);
-            }
-        });
+        function onCardMenuClick(card, list) {
+            const cardMenu = new CardMenu({
+                onClickAway: () => {
+                    dom.removeChild(cardMenuDOM);
+                },
+                onDeleteCard: () => {
+                    cardsByListRef
+                        .child(list.key)
+                        .orderByChild('position')
+                        .once('value', snapshot => {
+                            const cards = [];
+                            snapshot.forEach(child => {
+                                if(card.key !== child.val().key) {
+                                    cards.push(child.val());
+                                } else {
+                                    cardsByListRef.child(list.key).child(card.key).remove();
+                                }
+                            });
+                            cards.forEach((updatedCard, i) => {
+                                cardsByListRef.child(list.key).child(updatedCard.key).update({
+                                    position: i + 1
+                                });
+                            });
+                            board.update();
+                        });
+                }
+            });
 
-        const cardMenuDOM = cardMenu.render();
-
-        function onCardMenuClick() {
+            const cardMenuDOM = cardMenu.render();
+            
             dom.appendChild(cardMenuDOM);
         }
 

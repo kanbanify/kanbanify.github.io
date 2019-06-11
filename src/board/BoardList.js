@@ -47,6 +47,7 @@ class BoardList extends Component {
                 cards.forEach(cardData => {
                     const card = new Card({ 
                         cardData,
+                        list,
                         onCardMenuClick
                     });
                     cardList.appendChild(card.render());

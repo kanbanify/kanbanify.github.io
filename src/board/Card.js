@@ -1,6 +1,5 @@
 import Component from '../Component.js';
 import TripleDotButton from '../shared/TripleDotButton.js';
-import CardMenu from './CardMenu.js';
 
 class Card extends Component {
 
@@ -8,18 +7,12 @@ class Card extends Component {
         const dom = this.renderDOM();
 
         const onCardMenuClick = this.props.onCardMenuClick;
-
-        const cardMenu = new CardMenu({
-            onClickAway: () => {
-                dom.removeChild(cardMenuDOM);
-            }
-        });
-        const cardMenuDOM = cardMenu.render();
+        const cardData = this.props.cardData;
+        const list = this.props.list;
         
         const tripleDotButton = new TripleDotButton({ 
             onClick: () => {
-                // dom.appendChild(cardMenuDOM);
-                onCardMenuClick();
+                onCardMenuClick(cardData, list);
             }
         });
         

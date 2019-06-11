@@ -6,11 +6,17 @@ class CardMenu extends Component {
         const dom = this.renderDOM();
 
         const overlay = dom.querySelector('.overlay');
+        const deleteButton = dom.querySelector('.delete');
 
         const onClickAway = this.props.onClickAway;
+        const onDeleteCard = this.props.onDeleteCard;
 
         overlay.addEventListener('click', () => {
             onClickAway();
+        });
+
+        deleteButton.addEventListener('click', () => {
+            onDeleteCard();
         });
 
         return dom;
