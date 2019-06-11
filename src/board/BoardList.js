@@ -54,8 +54,8 @@ class BoardList extends Component {
     renderTemplate() {
         const list = this.props.list;
         return /*html*/`
-            <li>
-                <h2>${list.name}</h2>
+            <li class="board-list">
+                <h2 class="list-title">${list.name}</h2>
                 <ul></ul>
             </li>
         `;
