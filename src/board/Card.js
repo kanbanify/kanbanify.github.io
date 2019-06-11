@@ -5,7 +5,7 @@ class Card extends Component {
     renderTemplate() {
         const cardData = this.props.cardData;
         return /*html*/`
-            <li>
+            <li class="card">
                 <p>${cardData.content}</p>
             </li>
         `;

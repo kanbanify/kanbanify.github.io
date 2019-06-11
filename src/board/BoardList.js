@@ -8,7 +8,7 @@ class BoardList extends Component {
 
     render() {
         const dom = this.renderDOM();
-        
+
         const cardList = dom.querySelector('ul');
         const listSection = dom.querySelector('.list-section');
 
@@ -59,7 +59,7 @@ class BoardList extends Component {
             <li class="board-list">
                 <section class="list-section">
                     <h2 class="list-title">${list.name}</h2>
-                    <ul></ul>
+                    <ul class="card-list"></ul>
                 </section>
             </li>
         `;

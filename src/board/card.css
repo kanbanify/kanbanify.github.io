@@ -1,0 +1,14 @@
+.card {
+    padding: 0;
+    list-style: none;
+    border: 1px solid black;
+    background: whitesmoke;
+    border-radius: 5px;
+    margin: 3px;
+    padding: 3px;
+    font-size: .8em;
+}
+
+.card p {
+    margin: 0;
+}
