@@ -18,7 +18,7 @@ class BoardApp extends Component {
 
         const board = new Board({});
 
-        function onCardMenuClick(card, list) {
+        function onCardMenuClick(card, list, viewportOffset) {
             const cardMenu = new CardMenu({
                 onClickAway: () => {
                     dom.removeChild(cardMenuDOM);
@@ -47,6 +47,11 @@ class BoardApp extends Component {
             });
 
             const cardMenuDOM = cardMenu.render();
+
+            const menuButtons = cardMenuDOM.querySelector('.menu-buttons');
+
+            menuButtons.style.left = viewportOffset.x + 10 + viewportOffset.width + 'px';
+            menuButtons.style.top = viewportOffset.y + 'px';
             
             dom.appendChild(cardMenuDOM);
         }

@@ -10,7 +10,7 @@ class AuthApp extends Component {
     render() {
         const dom = this.renderDOM();
 
-        const header = new Header({ title: 'Authorization' });
+        const header = new Header({ title: 'Sign In' });
 
         dom.prepend(header.render());
 

@@ -12,7 +12,8 @@ class Card extends Component {
         
         const tripleDotButton = new TripleDotButton({ 
             onClick: () => {
-                onCardMenuClick(cardData, list);
+                const viewportOffset = dom.getBoundingClientRect();
+                onCardMenuClick(cardData, list, viewportOffset);
             }
         });
         

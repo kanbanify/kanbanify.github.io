@@ -21,7 +21,6 @@ class InvitesApp extends Component {
 
         invitesByUserRef.child(auth.currentUser.uid).on('value', snapshot => {
             const boardKeys = snapshot.val() ? Object.values(snapshot.val()) : [];
-            console.log(boardKeys);
             getBoardsFromKeys(boardKeys).then(boards => {
                 invitesList.update({ boards });
             });
