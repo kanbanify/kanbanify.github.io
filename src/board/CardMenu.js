@@ -1,5 +1,6 @@
 import Component from '../Component.js';
 import EditCardMenu from './EditCardMenu.js';
+import MoveCardMenu from './MoveCardMenu.js';
 
 class CardMenu extends Component {
 
@@ -9,6 +10,7 @@ class CardMenu extends Component {
         const overlay = dom.querySelector('.overlay');
         const deleteButton = dom.querySelector('.delete');
         const editButton = dom.querySelector('.edit');
+        const moveButton = dom.querySelector('.move');
 
         const onClickAway = this.props.onClickAway;
         const onDeleteCard = this.props.onDeleteCard;
@@ -16,10 +18,15 @@ class CardMenu extends Component {
 
         const viewportOffset = this.props.viewportOffset;
         const card = this.props.card;
+        const list = this.props.list;
+        const lists = this.props.lists;
 
         const editCardMenu = new EditCardMenu({ onEditCard });
         const editCardMenuDOM = editCardMenu.render();
         const editCardInput = editCardMenuDOM.querySelector('textarea');
+
+        const moveCardMenu = new MoveCardMenu({ card, list, lists });
+        const moveCardMenuDOM = moveCardMenu.render();
 
         overlay.addEventListener('click', () => {
             onClickAway();
@@ -27,6 +34,10 @@ class CardMenu extends Component {
 
         deleteButton.addEventListener('click', () => {
             onDeleteCard();
+        });
+
+        moveButton.addEventListener('click', () => {
+            dom.appendChild(moveCardMenuDOM);
         });
 
         editButton.addEventListener('click', () => {

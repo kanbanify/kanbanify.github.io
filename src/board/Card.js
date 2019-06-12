@@ -9,11 +9,12 @@ class Card extends Component {
         const onCardMenuClick = this.props.onCardMenuClick;
         const cardData = this.props.cardData;
         const list = this.props.list;
+        const lists = this.props.lists;
         
         const tripleDotButton = new TripleDotButton({ 
             onClick: () => {
                 const viewportOffset = dom.getBoundingClientRect();
-                onCardMenuClick(cardData, list, viewportOffset);
+                onCardMenuClick(cardData, list, viewportOffset, lists);
             }
         });
         

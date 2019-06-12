@@ -18,9 +18,11 @@ class BoardApp extends Component {
 
         const board = new Board({});
 
-        function onCardMenuClick(card, list, viewportOffset) {
+        function onCardMenuClick(card, list, viewportOffset, lists) {
             const cardMenu = new CardMenu({
                 card,
+                list,
+                lists,
                 viewportOffset,
                 onClickAway: () => {
                     dom.removeChild(cardMenuDOM);

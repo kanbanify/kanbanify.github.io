@@ -13,6 +13,7 @@ class BoardList extends Component {
         const listSection = dom.querySelector('.list-section');
 
         const list = this.props.list;
+        const lists = this.props.lists;
         const board = this.props.board;
 
         const onCardMenuClick = this.props.onCardMenuClick;
@@ -48,6 +49,7 @@ class BoardList extends Component {
                     const card = new Card({ 
                         cardData,
                         list,
+                        lists,
                         onCardMenuClick
                     });
                     cardList.appendChild(card.render());
