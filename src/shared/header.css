@@ -14,6 +14,13 @@
     border: 2px solid rgba(255, 255, 255, 0.468);
     border-radius: 5px;
     padding: 5px;
+    transition: .75s;
+}
+
+.profile button:hover {
+    color: rgba(255, 255, 255, 0.934);
+    border: 2px solid rgba(232, 232, 232, 0.468);
+    transition: .75s;
 }
 
 header {
