@@ -20,8 +20,19 @@ class BoardApp extends Component {
 
         function onCardMenuClick(card, list, viewportOffset) {
             const cardMenu = new CardMenu({
+                card,
+                viewportOffset,
                 onClickAway: () => {
                     dom.removeChild(cardMenuDOM);
+                },
+                onEditCard: (content) => {
+                    cardsByListRef
+                        .child(list.key)
+                        .child(card.key)
+                        .update({ content });
+                    
+                    dom.removeChild(cardMenuDOM);
+                    board.update();
                 },
                 onDeleteCard: () => {
                     cardsByListRef
