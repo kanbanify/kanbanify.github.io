@@ -8,6 +8,14 @@
     border-radius: 5px;
 }
 
+.profile button {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.42);
+    border: 2px solid rgba(255, 255, 255, 0.468);
+    border-radius: 5px;
+    padding: 5px;
+}
+
 header {
     display: flex;
     justify-content: center;
