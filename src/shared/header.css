@@ -44,11 +44,18 @@ header .profile span {
     padding: 0px 10px;
 }
 
-header .logo {
+header a .logo {
     object-fit: contain;
     width: 175px;
     position: absolute;
     left: 0;
+}
+
+header a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
 }
 
 .nav {
