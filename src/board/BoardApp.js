@@ -41,8 +41,12 @@ class BoardApp extends Component {
                                     position: i + 1
                                 });
                             });
+                            dom.removeChild(cardMenuDOM);
                             board.update();
                         });
+                    listsByBoardRef.child(boardKey).child(list.key).update({
+                        cardCount: list.cardCount - 1
+                    });
                 }
             });
 
