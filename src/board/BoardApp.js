@@ -2,6 +2,7 @@ import Component from '../Component.js';
 import Header from '../shared/Header.js';
 import Board from './Board.js';
 import CardMenu from './CardMenu.js';
+import ListMenu from './ListMenu.js';
 
 import QUERY from '../utils/QUERY.js';
 
@@ -18,6 +19,18 @@ class BoardApp extends Component {
 
         const board = new Board({});
 
+        function onListMenuClick(list) {
+            const listMenu = new ListMenu({
+                onClickAway: () => {
+                    dom.removeChild(listMenuDOM);
+                }
+            });
+
+            const listMenuDOM = listMenu.render();
+            dom.appendChild(listMenuDOM);
+            console.log(list);
+        }
+
         function onCardMenuClick(card, list, viewportOffset, lists) {
             const cardMenu = new CardMenu({
                 card,
@@ -28,7 +41,6 @@ class BoardApp extends Component {
                     dom.removeChild(cardMenuDOM);
                 },
                 onMoveCard: (targetList, targetPosition) => {
-                    console.log(targetList, targetPosition);
                     cardsByListRef
                         .child(list.key)
                         .child(card.key)
@@ -83,7 +95,7 @@ class BoardApp extends Component {
                                 .update({
                                     cardCount: cards.length
                                 });
-                                
+
                             dom.removeChild(cardMenuDOM);
                         });
 
@@ -93,7 +105,7 @@ class BoardApp extends Component {
                         .child(list.key)
                         .child(card.key)
                         .update({ content });
-                    
+
                     dom.removeChild(cardMenuDOM);
                     board.update();
                 },
@@ -130,7 +142,7 @@ class BoardApp extends Component {
 
             menuButtons.style.left = viewportOffset.x + 10 + viewportOffset.width + 'px';
             menuButtons.style.top = viewportOffset.y + 'px';
-            
+
             dom.appendChild(cardMenuDOM);
         }
 
@@ -141,14 +153,14 @@ class BoardApp extends Component {
                 snapshot.forEach(child => {
                     lists.push(child.val());
                 });
-                board.update({ board: boardInfo, lists, onCardMenuClick });
+                board.update({ board: boardInfo, lists, onCardMenuClick, onListMenuClick });
             });
 
         });
 
         dom.prepend(header.render());
         dom.appendChild(board.render());
-   
+
         return dom;
     }
 

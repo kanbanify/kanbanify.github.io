@@ -1,6 +1,7 @@
 import Component from '../Component.js';
 import AddCard from './AddCard.js';
 import Card from './Card.js';
+import TripleDotButton from '../shared/TripleDotButton.js';
 
 import { cardsByListRef, listsByBoardRef } from '../services/firebase.js';
 
@@ -17,6 +18,7 @@ class BoardList extends Component {
         const board = this.props.board;
 
         const onCardMenuClick = this.props.onCardMenuClick;
+        const onListMenuClick = this.props.onListMenuClick;
 
         if(!list) {
             return dom;
@@ -37,6 +39,12 @@ class BoardList extends Component {
             }
         });
 
+        const tripleDotButton = new TripleDotButton({
+            onClick: () => {
+                onListMenuClick(list);
+            }
+        });
+
         cardsByListRef
             .child(list.key)
             .orderByChild('position')
@@ -46,7 +54,7 @@ class BoardList extends Component {
                     cards.push(child.val());
                 });
                 cards.forEach(cardData => {
-                    const card = new Card({ 
+                    const card = new Card({
                         cardData,
                         list,
                         lists,
@@ -57,6 +65,7 @@ class BoardList extends Component {
             });
 
         listSection.appendChild(addCard.render());
+        listSection.appendChild(tripleDotButton.render());
 
         return dom;
     }
