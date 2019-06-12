@@ -1,10 +1,12 @@
+@import url("https://use.typekit.net/gma6ree.css");
+
 .profile {
     display: flex;
     align-items: center;
     position: absolute;
     right: 20px;
     background: #505050;
-    padding: 10px 20px;
+    padding: 7.5px 20px;
     border-radius: 5px;
 }
 
@@ -44,7 +46,37 @@ header .profile span {
 
 header .logo {
     object-fit: contain;
-    width: 200px;
+    width: 175px;
     position: absolute;
     left: 0;
+}
+
+.nav {
+    list-style: none;
+    display: flex;
+    width: 40vw;
+    justify-content: space-around;
+    padding: 0;
+    margin-right: 50px;
+}
+
+.nav li {
+    text-decoration: none;
+    color: white;
+    font-family: reross-rectangular, sans-serif;
+    opacity: .4;
+}
+
+.nav a {
+    text-decoration: none;
+}
+
+.nav a:hover {
+    text-shadow: 0px 0px 5px black;
+    transition: .5s;
+}
+
+.nav a .current-page {
+    border-bottom: 2px solid white;
+    opacity: 1;
 }
