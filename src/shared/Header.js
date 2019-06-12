@@ -29,7 +29,7 @@ class Header extends Component {
 
         return /*html*/`
             <header>
-                <img class="logo" src="./assets/kanbanify logo.png">
+                <a href="index.html"><img class="logo" src="./assets/kanbanify logo.png"></a>
                 <ul class="nav">
                     <a href="./index.html">
                         <li class="home">Home</li>
