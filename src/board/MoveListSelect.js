@@ -24,7 +24,7 @@ class MoveListSelect extends Component {
 
     renderTemplate() {
         return /*html*/ `
-            <select class="move-list-select">
+            <select class="move-list-select" name="move-list-select">
             </select>
         `;
     }

@@ -10,8 +10,6 @@ class MovePositionSelect extends Component {
         const card = this.props.card;
         const ogList = this.props.ogList;
 
-        console.log(list);
-
         for(let i = 1; i <= list.cardCount; i++) {
             const movePositionOption = new MovePositionOption({ position: i, card });
             dom.appendChild(movePositionOption.render());
@@ -27,7 +25,7 @@ class MovePositionSelect extends Component {
     
     renderTemplate() {
         return /*html*/ `
-            <select></select>
+            <select name="move-position-select"></select>
         `;
     }
 }

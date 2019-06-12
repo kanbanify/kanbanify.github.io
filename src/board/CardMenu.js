@@ -15,6 +15,7 @@ class CardMenu extends Component {
         const onClickAway = this.props.onClickAway;
         const onDeleteCard = this.props.onDeleteCard;
         const onEditCard = this.props.onEditCard;
+        const onMoveCard = this.props.onMoveCard;
 
         const viewportOffset = this.props.viewportOffset;
         const card = this.props.card;
@@ -25,7 +26,7 @@ class CardMenu extends Component {
         const editCardMenuDOM = editCardMenu.render();
         const editCardInput = editCardMenuDOM.querySelector('textarea');
 
-        const moveCardMenu = new MoveCardMenu({ card, list, lists });
+        const moveCardMenu = new MoveCardMenu({ card, list, lists, onMoveCard });
         const moveCardMenuDOM = moveCardMenu.render();
 
         overlay.addEventListener('click', () => {

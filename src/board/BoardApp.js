@@ -27,6 +27,67 @@ class BoardApp extends Component {
                 onClickAway: () => {
                     dom.removeChild(cardMenuDOM);
                 },
+                onMoveCard: (targetList, targetPosition) => {
+                    console.log(targetList, targetPosition);
+                    cardsByListRef
+                        .child(list.key)
+                        .child(card.key)
+                        .remove();
+
+                    listsByBoardRef
+                        .child(boardKey)
+                        .child(list.key)
+                        .update({ cardCount: list.cardCount - 1 });
+
+                    cardsByListRef
+                        .child(list.key)
+                        .orderByChild('position')
+                        .once('value', snapshot => {
+                            const cards = [];
+                            snapshot.forEach(childCard => {
+                                cards.push(childCard.val());
+                            });
+
+                            cards.forEach((childCard, i) => {
+                                cardsByListRef
+                                    .child(list.key)
+                                    .child(childCard.key)
+                                    .update({
+                                        position: i + 1
+                                    });
+                            });
+                        });
+
+                    cardsByListRef
+                        .child(targetList)
+                        .orderByChild('position')
+                        .once('value', snapshot => {
+                            const cards = [];
+                            snapshot.forEach(childCard => {
+                                cards.push(childCard.val());
+                            });
+                            cards.splice(targetPosition - 1, 0, card);
+                            cards.forEach((childCard, i) => {
+                                cardsByListRef
+                                    .child(targetList)
+                                    .child(childCard.key)
+                                    .set({
+                                        key: childCard.key,
+                                        position: i + 1,
+                                        content: childCard.content
+                                    });
+                            });
+                            listsByBoardRef
+                                .child(boardKey)
+                                .child(targetList)
+                                .update({
+                                    cardCount: cards.length
+                                });
+                                
+                            dom.removeChild(cardMenuDOM);
+                        });
+
+                },
                 onEditCard: (content) => {
                     cardsByListRef
                         .child(list.key)
