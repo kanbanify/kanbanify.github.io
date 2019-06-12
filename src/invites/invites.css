@@ -1,0 +1,58 @@
+.invites-list {
+    padding: 0;
+}
+
+.invite-item {
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    display: flex;
+    width: 80vw;
+    margin: 10px auto;
+    border-radius: 10px;
+    padding: 10px;
+    background: #464646;
+    border: 5px solid #9DAAB6;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.475);
+    color: white;
+    position: relative;
+}
+
+.invite-item h2 {
+    position: absolute;
+    top: 0%;
+    left: 20px;
+}
+
+.invite-item .accept {
+    background: #5b5b5b;
+    border: 2px solid rgb(32, 208, 32);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.invite-item .decline {
+    background: #5b5b5b;
+    border: 2px solid red;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.button-container {
+    position: absolute;
+    right: 10px;
+}
+
+.accept, .decline {
+    font-size: 1.2em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: .5s;
+    margin-right: 10px;
+    color: white;
+}
+
+.decline:hover, .accept:hover {
+    transition: 1s;
+    background: rgba(223, 223, 223, 0.454);
+}

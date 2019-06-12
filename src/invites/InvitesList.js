@@ -34,7 +34,7 @@ class InvitesList extends Component {
 
     renderTemplate() {
         return /*html*/`
-            <ul>
+            <ul class="invites-list">
             </ul>
         `;
     }

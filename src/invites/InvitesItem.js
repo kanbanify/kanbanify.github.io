@@ -26,10 +26,13 @@ class InvitesItem extends Component {
         const board = this.props.board;
 
         return /*html*/`
-            <li>
+            <li class="invite-item">
                 <h2>${board.name}</h2>
-                <button class="accept">accept</button>
-                <button class="decline">decline</button>
+                <p>Invited by Jack McConnell</p>
+                <div class="button-container">
+                    <button class="accept">accept</button>
+                    <button class="decline">decline</button>
+                </div>
             </li>
         `;
     }

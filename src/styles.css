@@ -2,6 +2,8 @@
 
 body, html {
     font-family: 'Roboto', sans-serif;
+    background-image: linear-gradient(to left, #385c78b1 0%, #517fa4a8 100%);
+    height: 100%
 }
 
 body {
