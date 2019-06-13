@@ -1,6 +1,5 @@
 import Component from '../Component.js';
 import AddCard from './AddCard.js';
-// import Card from './Card.js';
 import TripleDotButton from '../shared/TripleDotButton.js';
 import CardList from './CardList.js';
 
@@ -11,7 +10,6 @@ class BoardList extends Component {
     render() {
         const dom = this.renderDOM();
 
-        // const cardList = dom.querySelector('ul');
         const listSection = dom.querySelector('.list-section');
 
         const list = this.props.list;
@@ -60,16 +58,6 @@ class BoardList extends Component {
                 });
 
                 cardList.update({ cards, list, lists, onCardMenuClick });
-
-                // cards.forEach(cardData => {
-                //     const card = new Card({
-                //         cardData,
-                //         list,
-                //         lists,
-                //         onCardMenuClick
-                //     });
-                //     cardList.appendChild(card.render());
-                // });
             });
 
         listSection.appendChild(addCard.render());
