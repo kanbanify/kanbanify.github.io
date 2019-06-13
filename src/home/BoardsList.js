@@ -1,5 +1,6 @@
 import Component from '../Component.js';
 import BoardsItem from './BoardsItem.js';
+import { auth } from '../services/firebase.js';
 
 class BoardsList extends Component {
     render() {
@@ -7,15 +8,17 @@ class BoardsList extends Component {
         const boards = this.props.boards;
         
         boards.forEach(board => {
-            const boardsItem = new BoardsItem({ board });
-            dom.appendChild(boardsItem.render());
+            if(board.owner === (auth.currentUser.uid)) {
+                const boardsItem = new BoardsItem({ board });
+                dom.appendChild(boardsItem.render());
+            }
         });
 
         return dom;
     }
     renderTemplate() {
         return /*html*/ `
-            <ul></ul>
+            <ul class="boards-list"></ul>
         `;
     }
 }
