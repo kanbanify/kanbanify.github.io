@@ -2,7 +2,7 @@ import Component from '../Component.js';
 import SendInvite from './SendInvite.js';
 import BoardLists from './BoardLists.js';
 
-import { usersRef, invitesByUserRef } from '../services/firebase.js';
+import { auth, usersRef, invitesByUserRef } from '../services/firebase.js';
 
 class Board extends Component {
 
@@ -30,7 +30,10 @@ class Board extends Component {
                         invitesByUserRef
                             .child(uid)
                             .child(board.key)
-                            .set({ key: board.key });
+                            .set({
+                                key: board.key,
+                                from: auth.currentUser.displayName
+                            });
                     }
                 });
             }
