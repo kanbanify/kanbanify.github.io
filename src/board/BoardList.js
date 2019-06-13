@@ -60,16 +60,6 @@ class BoardList extends Component {
                 });
 
                 cardList.update({ cards, list, lists, onCardMenuClick });
-
-                // cards.forEach(cardData => {
-                //     const card = new Card({
-                //         cardData,
-                //         list,
-                //         lists,
-                //         onCardMenuClick
-                //     });
-                //     cardList.appendChild(card.render());
-                // });
             });
 
         listSection.appendChild(addCard.render());
