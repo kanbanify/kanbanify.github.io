@@ -13,6 +13,7 @@
     -webkit-transition: opacity 1000ms linear;
     transition: opacity 1000ms linear;
     z-index: 5;
+    background: rgb(103, 103, 103);
 }
 
 .expand-button {
@@ -25,8 +26,8 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background: #5b5b5b57;
-    border-radius: 7px 7px 0 0;
+    background: rgb(103, 103, 103);
+    border-radius: 7px;
     border: none;
     transition: .75s;
     min-width: 200px;
@@ -53,13 +54,7 @@
     border: none;
     outline: none;
     padding: 0 0 0 10px;
-    background: rgb(87, 87, 87);
-    color: white;
     height: 30px;
-}
-
-.invite-input::placeholder {
-    color: rgba(255, 255, 255, 0.447);
 }
 
 .send-invite form {
@@ -85,7 +80,7 @@
 .send-button:hover {
     transition: .5s; 
     color: white;
-    background: rgba(123, 123, 123, 0.603);
+    background: rgba(123, 123, 123);
 }
 
 @keyframes fadein {
