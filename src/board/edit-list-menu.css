@@ -6,7 +6,9 @@
 .edit-list-menu textarea {
     border-radius: 5px;
     outline: none;
-    margin: 3px 0;
+    margin-top: 3px;
+    width: 240px;
+    resize: vertical;
 }
 
 .edit-list-form {
@@ -16,8 +18,16 @@
     background: rgb(92, 92, 92);
     justify-content: center;
     align-items: center;
+    width: 250px;
+    border-radius: 5px;
 }
 
 .edit-list-form button {
-    width: 50px;
+    border: 3px solid #00bff0;
+    border-radius: 3px;
+    background: rgba(187, 187, 187, 0.226);
+    color: white;
+    height: 25px;
+    margin: 3px;
+    align-self: flex-start;
 }

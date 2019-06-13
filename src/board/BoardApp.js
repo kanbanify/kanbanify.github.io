@@ -96,7 +96,7 @@ class BoardApp extends Component {
 
             const menuButtons = listMenuDOM.querySelector('.menu-buttons');
 
-            menuButtons.style.left = viewportOffset.x + viewportOffset.width - 30 + 'px';
+            menuButtons.style.left = viewportOffset.x + viewportOffset.width + 'px';
             menuButtons.style.top = (viewportOffset.y + 30) + 'px';
 
             dom.appendChild(listMenuDOM);

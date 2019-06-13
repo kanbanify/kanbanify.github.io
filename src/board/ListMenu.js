@@ -11,6 +11,9 @@ class ListMenu extends Component {
         const onDeleteList = this.props.onDeleteList;
         const onEditList = this.props.onEditList;
         const onMoveList = this.props.onMoveList;
+        const viewportOffset = this.props.viewportOffset;
+
+        console.log(viewportOffset);
 
         const list = this.props.list;
         const board = this.props.board;
@@ -37,6 +40,9 @@ class ListMenu extends Component {
 
         editButton.addEventListener('click', () => {
             editListInput.value = list.name;
+            editListMenuDOM.style.top = viewportOffset.y + 'px';
+            editListMenuDOM.style.left = viewportOffset.x + 'px';
+            editListMenuDOM.style.width = (viewportOffset.width - 6) + 'px';
             dom.prepend(editListMenuDOM);
         });
 
