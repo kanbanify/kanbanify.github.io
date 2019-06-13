@@ -42,7 +42,7 @@ class Board extends Component {
 
     renderTemplate() {
         return /*html*/`
-            <main></main>
+            <main class="board"></main>
         `;
     }
 }
