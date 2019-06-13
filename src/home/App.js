@@ -61,7 +61,7 @@ class App extends Component {
     renderTemplate() {
         return /*html*/`
             <div>
-                <main></main>
+                <main class="whole-page"></main>
             </div>
         `;
     }

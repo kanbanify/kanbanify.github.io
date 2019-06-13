@@ -1,16 +1,20 @@
+.whole-page {
+    max-width: 80vw;
+    margin: auto;
+}
+
 ul {
     padding-inline-start: 0;
 }
 
 .new-board {
-    margin: auto;
+    margin: 5px;
     align-items: center;
     display: flex;
     flex-flow: column;
     background-color: #464646;
     border: 5px solid #9DAAB6;
     border-radius: 10px;
-    width: 80vw;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.475);
 }
 

@@ -1,10 +1,25 @@
 .board-item {
+    margin: auto;
+    flex: 1;
+    justify-content: center;
     background-color: #464646;
     border: 5px solid #9DAAB6;
     border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     margin: 6px;
     padding: 0px 10px;
-    width: 20vw;
     color: rgb(255, 255, 255);
     text-decoration: none;
+    list-style: none;
+    transition: .5s;
+}
+
+.board-item:hover {
+    border: 5px solid rgb(201, 209, 216);
+    box-shadow: 0px 0px 14px rgba(129, 129, 129, 0.5);
+    transition: .5s;
+}
+
+.board-item li {
+    text-align: center;
 }
