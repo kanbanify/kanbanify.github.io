@@ -29,16 +29,23 @@ class Header extends Component {
 
         return /*html*/`
             <header>
-                <a href="index.html"><img class="logo" src="./assets/kanbanify logo.png"></a>
+                <a href="index.html">
+                    <img id="logo" src="./assets/kanbanify logo.png"></a>
                 <ul class="nav">
                     <a href="./index.html">
-                        <li class="home">Home</li>
+                        <li class="home">home</li>
                     </a>
                     <a href="./invites.html">
-                        <li class="invites">Board Invites</li>
+                        <li class="invites">
+                            invitations
+                            <img class="invites-envelope" src='/assets/envelope.png'>
+                            <div class="invites-count">
+                                <p>1</p>
+                            </div>
+                        </li>
                     </a>
                     <a href="./index.html">
-                        <li class="about">About Us</li>
+                        <li class="about">about us</li>
                     </a>
                 </ul>
             </header>
