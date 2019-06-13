@@ -1,6 +1,5 @@
 import Component from '../Component.js';
 import AddCard from './AddCard.js';
-// import Card from './Card.js';
 import TripleDotButton from '../shared/TripleDotButton.js';
 import CardList from './CardList.js';
 
