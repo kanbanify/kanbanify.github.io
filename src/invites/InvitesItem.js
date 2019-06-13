@@ -10,7 +10,6 @@ class InvitesItem extends Component {
         const onAccept = this.props.onAccept;
         const onDecline = this.props.onDecline;
         const board = this.props.board;
-        console.log(board);
 
         declineButton.addEventListener('click', () => {
             onDecline(board);
