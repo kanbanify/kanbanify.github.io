@@ -1,0 +1,10 @@
+.board-item {
+    background-color: #464646;
+    border: 5px solid #9DAAB6;
+    border-radius: 10px;
+    margin: 6px;
+    padding: 0px 10px;
+    width: 20vw;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
