@@ -6,7 +6,7 @@ class BoardsItem extends Component {
         const board = this.props.board;
 
         return /*html*/`
-            <a href="./board.html?key=${board.key}">
+            <a class="board-item" href="./board.html?key=${board.key}">
                 <li>
                     <h2>${board.name}</h2>
                 </li>

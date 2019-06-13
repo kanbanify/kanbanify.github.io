@@ -5,7 +5,7 @@ class BoardsList extends Component {
     render() {
         const dom = this.renderDOM();
         const boards = this.props.boards;
-        
+
         boards.forEach(board => {
             const boardsItem = new BoardsItem({ board });
             dom.appendChild(boardsItem.render());
@@ -13,10 +13,9 @@ class BoardsList extends Component {
 
         return dom;
     }
-
     renderTemplate() {
-        return /*html*/`
-            <ul></ul>
+        return /*html*/ `
+            <ul class="boards-list"></ul>
         `;
     }
 }

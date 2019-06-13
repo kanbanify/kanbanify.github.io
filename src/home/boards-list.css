@@ -1,0 +1,6 @@
+.boards-list {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    margin: 4px 0;
+}

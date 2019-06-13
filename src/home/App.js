@@ -1,7 +1,7 @@
 import Component from '../Component.js';
 import Header from '../shared/Header.js';
 import AddBoard from './AddBoard.js';
-import BoardsList from './BoardsList.js';
+import BoardsSection from './BoardsSection.js';
 
 import { getBoardsFromKeys } from '../services/actions.js';
 import { auth, boardsRef, boardsByUserRef, usersByBoardRef } from '../services/firebase.js';
@@ -15,7 +15,7 @@ class App extends Component {
 
         const header = new Header({ title: 'Home' });
 
-        const boardList = new BoardsList({ boards: [] });
+        const boardList = new BoardsSection({ boards: [] });
 
         boardsByUserRef.child(auth.currentUser.uid).on('value', snapshot => {
             const value = snapshot.val();
@@ -61,7 +61,7 @@ class App extends Component {
     renderTemplate() {
         return /*html*/`
             <div>
-                <main>Home Page</main>
+                <main class="whole-page"></main>
             </div>
         `;
     }
