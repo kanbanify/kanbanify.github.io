@@ -20,3 +20,4 @@ export const usersByBoardRef = db.ref('usersByBoard');
 export const invitesByUserRef = db.ref('invitesByUser');
 export const listsByBoardRef = db.ref('listsByBoard');
 export const cardsByListRef = db.ref('cardsByList');
+export const messagesByBoardRef = db.ref('messagesByBoard');
