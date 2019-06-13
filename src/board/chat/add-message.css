@@ -1,0 +1,25 @@
+.message-form {
+    height: 30px;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0;
+}
+
+.message-form button {
+    width: 30%;
+    border: none;
+    outline: none;
+    background-color: rgb(208, 208, 208);
+    color: rgb(55, 55, 55);
+    font-weight: bolder;
+}
+
+.message-form input {
+    width: 70%;
+    outline: none;
+    border: none;
+    border-radius: 0px 0px 0px 7px;
+    padding-left: 5px;
+}
