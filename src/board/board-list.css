@@ -24,3 +24,27 @@
 .card-list {
     padding: 0;
 }
+
+.add-card form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-card textarea {
+    min-height: 30px;
+    width: 234px;
+    resize: vertical;
+    border-radius: 5px;
+    outline: none;
+}
+
+.add-card button {
+    border: 3px solid #00bff0;
+    border-radius: 3px;
+    background: rgba(187, 187, 187, 0.226);
+    color: white;
+    height: 25px;
+    margin: 3px;
+    align-self: flex-start;
+}
