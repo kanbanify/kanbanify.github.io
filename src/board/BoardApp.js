@@ -2,10 +2,11 @@ import Component from '../Component.js';
 import Header from '../shared/Header.js';
 import Board from './Board.js';
 import CardMenu from './CardMenu.js';
+import MessagesContainer from './MessagesContainer.js';
 
 import QUERY from '../utils/QUERY.js';
 
-import { boardsRef, listsByBoardRef, cardsByListRef } from '../services/firebase.js';
+import { boardsRef, listsByBoardRef, cardsByListRef, messagesByBoardRef } from '../services/firebase.js';
 
 class BoardApp extends Component {
 
@@ -17,6 +18,15 @@ class BoardApp extends Component {
         const header = new Header();
 
         const board = new Board({});
+
+        const messagesContainer = new MessagesContainer({ boardKey, messagesData: [] });
+        dom.appendChild(messagesContainer.render());
+
+        messagesByBoardRef.child(boardKey).on('value', snapshot => {
+            const messagesData = snapshot.val() ? Object.values(snapshot.val()) : [];
+            messagesContainer.update({ messagesData });
+        });
+
 
         function onCardMenuClick(card, list, viewportOffset, lists) {
             const cardMenu = new CardMenu({
