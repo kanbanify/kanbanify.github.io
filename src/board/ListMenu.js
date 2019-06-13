@@ -1,5 +1,6 @@
 import Component from '../Component.js';
 import EditListMenu from './EditListMenu.js';
+import MoveListMenu from './MoveList/MoveListMenu.js';
 
 class ListMenu extends Component {
 
@@ -9,13 +10,21 @@ class ListMenu extends Component {
         const onClickAway = this.props.onClickAway;
         const onDeleteList = this.props.onDeleteList;
         const onEditList = this.props.onEditList;
+        const onMoveList = this.props.onMoveList;
+
+        const list = this.props.list;
+        const board = this.props.board;
 
         const overlay = dom.querySelector('.overlay');
         const deleteButton = dom.querySelector('.delete');
         const editButton = dom.querySelector('.edit');
+        const moveButton = dom.querySelector('.move');
 
         const editListMenu = new EditListMenu({ onEditList });
         const editListMenuDOM = editListMenu.render();
+
+        const moveListMenu = new MoveListMenu({ list, board, onMoveList });
+        const moveListMenuDOM = moveListMenu.render();
 
         overlay.addEventListener('click', () => {
             onClickAway();
@@ -27,6 +36,10 @@ class ListMenu extends Component {
 
         editButton.addEventListener('click', () => {
             dom.prepend(editListMenuDOM);
+        });
+
+        moveButton.addEventListener('click', () => {
+            dom.appendChild(moveListMenuDOM);
         });
 
         return dom;

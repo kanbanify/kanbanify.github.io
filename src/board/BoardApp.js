@@ -19,11 +19,25 @@ class BoardApp extends Component {
 
         const board = new Board({});
 
-        function onListMenuClick(list, lists, viewportOffset) {
+        function onListMenuClick(list, lists, board, viewportOffset) {
             const listMenu = new ListMenu({
+                list,
+                board,
                 viewportOffset,
                 onClickAway: () => {
                     dom.removeChild(listMenuDOM);
+                },
+                onMoveList: (targetPosition) => {
+                    lists.splice(list.position - 1, 1);
+                    lists.splice(targetPosition - 1, 0, list);
+                    lists.forEach((childList, i) => {
+                        listsByBoardRef
+                            .child(boardKey)
+                            .child(childList.key)
+                            .update({
+                                position: i + 1
+                            });
+                    });
                 },
                 onEditList: (name) => {
                     listsByBoardRef
@@ -158,7 +172,7 @@ class BoardApp extends Component {
                         .update({ content });
 
                     dom.removeChild(cardMenuDOM);
-                    board.update();
+                    // board.update();
                 },
                 onDeleteCard: () => {
                     cardsByListRef

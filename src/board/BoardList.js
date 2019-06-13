@@ -42,7 +42,7 @@ class BoardList extends Component {
         const tripleDotButton = new TripleDotButton({
             onClick: () => {
                 const viewportOffset = dom.getBoundingClientRect();
-                onListMenuClick(list, lists, viewportOffset);
+                onListMenuClick(list, lists, board, viewportOffset);
             }
         });
 
