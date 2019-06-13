@@ -11,7 +11,6 @@ class BoardList extends Component {
     render() {
         const dom = this.renderDOM();
 
-        // const cardList = dom.querySelector('ul');
         const listSection = dom.querySelector('.list-section');
 
         const list = this.props.list;

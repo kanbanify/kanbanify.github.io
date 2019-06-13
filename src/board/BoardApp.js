@@ -173,7 +173,6 @@ class BoardApp extends Component {
                         .update({ content });
 
                     dom.removeChild(cardMenuDOM);
-                    // board.update();
                 },
                 onDeleteCard: () => {
                     cardsByListRef
