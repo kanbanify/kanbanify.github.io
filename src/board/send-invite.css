@@ -1,0 +1,91 @@
+.board {
+    position: relative;
+}
+
+.send-invite {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 15px;
+    top: 0;
+    border: 3px solid rgba(255, 255, 255, 0.493);
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.199);
+    -webkit-transition: opacity 1000ms linear;
+    transition: opacity 1000ms linear;
+}
+
+.expand-button {
+    background: transparent;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    background: #5b5b5b57;
+    border-radius: 7px 7px 0 0;
+    border: none;
+    transition: .75s;
+    min-width: 100%;
+}
+
+.expand-button:hover {
+    background: #9898987a;
+    transition: .75s;
+}
+
+.expand-button p {
+    color: white;
+    font-size: 1em;
+    margin: 10px;
+}
+
+.expand-button img {
+    width: 20px;
+}
+
+.invite-input {
+    min-width: 70%;
+    border-radius: 0 0 0 7px;   
+    border: none;
+    animation: fadein 1s steps(60);
+    outline: none;
+    padding-left: 10px;
+    background: rgb(87, 87, 87);
+    color: white;
+}
+
+.invite-input::placeholder {
+    color: rgba(255, 255, 255, 0.447);
+}
+
+.send-invite form {
+    display: flex;
+    justify-content: center;
+}
+
+.send-button {
+    height: 35px;
+    width: 30%;
+    border: none;
+    outline: none;
+    border-radius: 0 0 7px 0;
+    animation: fadein 1s steps(60);
+    background: rgb(242, 242, 242);
+    transition: 1s;
+    cursor: pointer;
+    padding: 0;
+    font-weight: bolder;
+    font-size: 10px;
+    color: #222222b0;
+}
+
+.send-button:hover {
+    transition: .5s; 
+    color: white;
+    background: rgba(123, 123, 123, 0.603);
+}
+
+@keyframes fadein {
+    0% { opacity: 0 }
+    100% { opacity: 100% }
+}

@@ -1,0 +1,23 @@
+.edit-card-menu {
+    z-index: 6;
+    position: absolute;
+}
+
+.edit-card-menu textarea {
+    border-radius: 5px;
+    outline: none;
+    margin: 3px 0;
+}
+
+.edit-card-form {
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    background: rgb(92, 92, 92);
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-card-form button {
+    width: 50px;
+}

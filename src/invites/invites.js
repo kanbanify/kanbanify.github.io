@@ -1,12 +1,12 @@
 import '../utils/check-auth.js';
-import App from './App.js';
+import InvitesApp from './InvitesApp.js';
 import { auth } from '../services/firebase.js';
 
 const root = document.getElementById('app');
 
 auth.onAuthStateChanged((user) => {
     if(user) {
-        const app = new App();
+        const app = new InvitesApp();
         root.appendChild(app.render());
     }
 });
