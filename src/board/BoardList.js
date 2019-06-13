@@ -1,7 +1,8 @@
 import Component from '../Component.js';
 import AddCard from './AddCard.js';
-import Card from './Card.js';
+// import Card from './Card.js';
 import TripleDotButton from '../shared/TripleDotButton.js';
+import CardList from './CardList.js';
 
 import { cardsByListRef, listsByBoardRef } from '../services/firebase.js';
 
@@ -10,7 +11,7 @@ class BoardList extends Component {
     render() {
         const dom = this.renderDOM();
 
-        const cardList = dom.querySelector('ul');
+        // const cardList = dom.querySelector('ul');
         const listSection = dom.querySelector('.list-section');
 
         const list = this.props.list;
@@ -23,6 +24,9 @@ class BoardList extends Component {
         if(!list) {
             return dom;
         }
+
+        const cardList = new CardList({});
+        listSection.appendChild(cardList.render());
 
         const addCard = new AddCard({
             onAddCard: content => {
@@ -54,15 +58,18 @@ class BoardList extends Component {
                 snapshot.forEach(child => {
                     cards.push(child.val());
                 });
-                cards.forEach(cardData => {
-                    const card = new Card({
-                        cardData,
-                        list,
-                        lists,
-                        onCardMenuClick
-                    });
-                    cardList.appendChild(card.render());
-                });
+
+                cardList.update({ cards, list, lists, onCardMenuClick });
+
+                // cards.forEach(cardData => {
+                //     const card = new Card({
+                //         cardData,
+                //         list,
+                //         lists,
+                //         onCardMenuClick
+                //     });
+                //     cardList.appendChild(card.render());
+                // });
             });
 
         listSection.appendChild(addCard.render());
@@ -77,7 +84,6 @@ class BoardList extends Component {
             <li class="board-list">
                 <section class="list-section">
                     <h2 class="list-title">${list.name}</h2>
-                    <ul class="card-list"></ul>
                 </section>
             </li>
         `;
