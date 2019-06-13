@@ -41,14 +41,15 @@ class BoardList extends Component {
 
         const tripleDotButton = new TripleDotButton({
             onClick: () => {
-                onListMenuClick(list);
+                const viewportOffset = dom.getBoundingClientRect();
+                onListMenuClick(list, lists, viewportOffset);
             }
         });
 
         cardsByListRef
             .child(list.key)
             .orderByChild('position')
-            .once('value', snapshot => {
+            .on('value', snapshot => {
                 const cards = [];
                 snapshot.forEach(child => {
                     cards.push(child.val());

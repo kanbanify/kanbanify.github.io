@@ -1,16 +1,32 @@
 import Component from '../Component.js';
+import EditListMenu from './EditListMenu.js';
 
-class Header extends Component {
+class ListMenu extends Component {
 
     render() {
         const dom = this.renderDOM();
 
         const onClickAway = this.props.onClickAway;
+        const onDeleteList = this.props.onDeleteList;
+        const onEditList = this.props.onEditList;
 
         const overlay = dom.querySelector('.overlay');
+        const deleteButton = dom.querySelector('.delete');
+        const editButton = dom.querySelector('.edit');
+
+        const editListMenu = new EditListMenu({ onEditList });
+        const editListMenuDOM = editListMenu.render();
 
         overlay.addEventListener('click', () => {
             onClickAway();
+        });
+
+        deleteButton.addEventListener('click', () => {
+            onDeleteList();
+        });
+
+        editButton.addEventListener('click', () => {
+            dom.prepend(editListMenuDOM);
         });
 
         return dom;
@@ -30,4 +46,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default ListMenu;

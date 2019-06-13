@@ -19,16 +19,67 @@ class BoardApp extends Component {
 
         const board = new Board({});
 
-        function onListMenuClick(list) {
+        function onListMenuClick(list, lists, viewportOffset) {
             const listMenu = new ListMenu({
+                viewportOffset,
                 onClickAway: () => {
+                    dom.removeChild(listMenuDOM);
+                },
+                onEditList: (name) => {
+                    listsByBoardRef
+                        .child(boardKey)
+                        .child(list.key)
+                        .update({
+                            name
+                        });
+                    dom.removeChild(listMenuDOM);
+                },
+                onDeleteList: () => {
+                    listsByBoardRef
+                        .child(boardKey)
+                        .child(list.key)
+                        .remove();
+
+                    cardsByListRef
+                        .child(list.key)
+                        .remove();
+
+                    boardsRef
+                        .child(boardKey)
+                        .update({
+                            listCount: lists.length - 1
+                        });
+
+                    listsByBoardRef
+                        .child(boardKey)
+                        .orderByChild('position')
+                        .once('value', snapshot => {
+                            const lists = [];
+                            snapshot.forEach(childList => {
+                                lists.push(childList.val());
+                            });
+
+                            lists.forEach((childList, i) => {
+                                listsByBoardRef
+                                    .child(boardKey)
+                                    .child(childList.key)
+                                    .update({
+                                        position: i + 1
+                                    });
+                            });
+                        });
                     dom.removeChild(listMenuDOM);
                 }
             });
 
             const listMenuDOM = listMenu.render();
+
+            const menuButtons = listMenuDOM.querySelector('.menu-buttons');
+
+            menuButtons.style.left = viewportOffset.x + viewportOffset.width - 30 + 'px';
+            menuButtons.style.top = (viewportOffset.y + 30) + 'px';
+
             dom.appendChild(listMenuDOM);
-            console.log(list);
         }
 
         function onCardMenuClick(card, list, viewportOffset, lists) {
@@ -128,7 +179,6 @@ class BoardApp extends Component {
                                 });
                             });
                             dom.removeChild(cardMenuDOM);
-                            board.update();
                         });
                     listsByBoardRef.child(boardKey).child(list.key).update({
                         cardCount: list.cardCount - 1
