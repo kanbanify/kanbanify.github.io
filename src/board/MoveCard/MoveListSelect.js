@@ -1,4 +1,4 @@
-import Component from '../Component.js';
+import Component from '../../Component.js';
 import MoveListOption from './MoveListOption.js';
 
 class MoveListSelect extends Component {

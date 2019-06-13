@@ -1,0 +1,7 @@
+.list-section {
+    position: relative;
+}
+
+.list-section:hover > .menu-button {
+    display: block;
+}

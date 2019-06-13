@@ -1,4 +1,4 @@
-import Component from '../Component.js';
+import Component from '../../Component.js';
 
 class MoveListOption extends Component {
     renderTemplate() {
@@ -10,7 +10,7 @@ class MoveListOption extends Component {
                 <option selected value="${list.key}">
                     ${list.name}
                 </option>
-            `;          
+            `;
         }
 
         return /*html*/ `

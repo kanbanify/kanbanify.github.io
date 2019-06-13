@@ -1,4 +1,4 @@
-import Component from '../Component.js';
+import Component from '../../Component.js';
 import MoveListSelect from './MoveListSelect.js';
 import MovePositionSelect from './MovePositonSelect.js';
 
@@ -15,8 +15,8 @@ class MoveCardMenu extends Component {
         const movePositionSelect = new MovePositionSelect({ list, card, ogList: list });
         dom.prepend(movePositionSelect.render());
 
-        const moveListSelect = new MoveListSelect({ 
-            lists, 
+        const moveListSelect = new MoveListSelect({
+            lists,
             list,
             onListChange: (listKey) => {
                 lists.forEach(childList => {
@@ -35,10 +35,10 @@ class MoveCardMenu extends Component {
             const targetList = fd.get('move-list-select');
             onMoveCard(targetList, targetPosition);
         });
-        
+
         return dom;
     }
-    
+
     renderTemplate() {
         return /*html*/ `
             <form class="move-card-menu">
