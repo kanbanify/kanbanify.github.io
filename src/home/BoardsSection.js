@@ -19,25 +19,20 @@ class BoardsSection extends Component {
             }
         });
 
-        const ownerCondition = '(board.owner === (auth.currentUser.uid))';
-        const notOwnerCondition = '(board.owner !== (auth.currentUser.uid))';
-
         const personalHeader = new BoardsHeader({
             title: 'Personal Boards',
-            image: '../../assets/personal-boards.png'
+            image: './assets/personal-boards.png'
         });
         const colabHeader = new BoardsHeader({
             title: 'Collaborative Boards',
-            image: '../../assets/collaborative-boards.png'
+            image: './assets/collaborative-boards.png'
         });
 
         const boardsListPersonal = new BoardsList({
-            boards: personalBoards,
-            condition: ownerCondition
+            boards: personalBoards
         });
         const boardsListCollaborative = new BoardsList({
-            boards: collaborativeBoards,
-            condition: notOwnerCondition
+            boards: collaborativeBoards
         });
 
         dom.appendChild(personalHeader.render());
