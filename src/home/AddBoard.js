@@ -12,7 +12,11 @@ class AddBoard extends Component {
         dom.addEventListener('submit', event => {
             event.preventDefault();
 
-            onAddBoard(input.value);
+            if(input.value.trim() === '') {
+                alert('Please add a title for your board.');
+            } else {
+                onAddBoard(input.value);
+            }
 
             dom.reset();
         });
