@@ -38,6 +38,7 @@ class BoardApp extends Component {
                                 position: i + 1
                             });
                     });
+                    dom.removeChild(listMenuDOM);
                 },
                 onEditList: (name) => {
                     listsByBoardRef

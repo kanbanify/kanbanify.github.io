@@ -15,8 +15,6 @@ class CardList extends Component {
             return dom;
         }
 
-        console.log(cards);
-
         cards.forEach(childCard => {
             const card = new Card({ cardData: childCard, list, lists, onCardMenuClick });
             dom.appendChild(card.render());

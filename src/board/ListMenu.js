@@ -22,6 +22,7 @@ class ListMenu extends Component {
 
         const editListMenu = new EditListMenu({ onEditList });
         const editListMenuDOM = editListMenu.render();
+        const editListInput = editListMenuDOM.querySelector('textarea');
 
         const moveListMenu = new MoveListMenu({ list, board, onMoveList });
         const moveListMenuDOM = moveListMenu.render();
@@ -35,6 +36,7 @@ class ListMenu extends Component {
         });
 
         editButton.addEventListener('click', () => {
+            editListInput.value = list.name;
             dom.prepend(editListMenuDOM);
         });
 
