@@ -1,13 +1,15 @@
 import Component from '../Component.js';
 import BoardsHeader from './BoardsHeader.js';
 import BoardsList from './BoardsList.js';
-import BoardsListAll from './BoardsListAll.js';
 
 class BoardsSection extends Component {
     render() {
         const dom = this.renderDOM();
 
         const boards = this.props.boards;
+
+        const ownerCondition = '(board.owner === (auth.currentUser.uid))';
+        const notOwnerCondition = '(board.owner !== (auth.currentUser.uid))';
 
         const personalHeader = new BoardsHeader({
             title: 'Personal Boards',
@@ -18,14 +20,20 @@ class BoardsSection extends Component {
             image: '../../assets/collaborative-boards.png'
         });
 
-        const boardsList = new BoardsList({ boards });
-        const boardsListAll = new BoardsListAll({ boards });
+        const boardsListPersonal = new BoardsList({
+            boards,
+            condition: ownerCondition
+        });
+        const boardsListCollaborative = new BoardsList({
+            boards,
+            condition: notOwnerCondition
+        });
 
         dom.appendChild(personalHeader.render());
-        dom.appendChild(boardsList.render());
+        dom.appendChild(boardsListPersonal.render());
 
         dom.appendChild(colabHeader.render());
-        dom.appendChild(boardsListAll.render());
+        dom.appendChild(boardsListCollaborative.render());
 
         return dom;
     }

@@ -6,9 +6,10 @@ class BoardsList extends Component {
     render() {
         const dom = this.renderDOM();
         const boards = this.props.boards;
-        
+        const condition = this.props.condition;
+
         boards.forEach(board => {
-            if(board.owner === (auth.currentUser.uid)) {
+            if(eval(condition)) {
                 const boardsItem = new BoardsItem({ board });
                 dom.appendChild(boardsItem.render());
             }
