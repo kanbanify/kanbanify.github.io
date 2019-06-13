@@ -3,6 +3,7 @@ import Header from '../shared/Header.js';
 import Board from './Board.js';
 import CardMenu from './CardMenu.js';
 import MessagesContainer from './chat/MessagesContainer.js';
+import ListMenu from './ListMenu.js';
 
 import QUERY from '../utils/QUERY.js';
 
@@ -19,8 +20,87 @@ class BoardApp extends Component {
 
         const board = new Board({});
 
+
         const messagesContainer = new MessagesContainer({ boardKey });
         dom.appendChild(messagesContainer.render());
+
+        function onListMenuClick(list, lists, board, viewportOffset) {
+            const listMenu = new ListMenu({
+                list,
+                board,
+                viewportOffset,
+                onClickAway: () => {
+                    dom.removeChild(listMenuDOM);
+                },
+                onMoveList: (targetPosition) => {
+                    lists.splice(list.position - 1, 1);
+                    lists.splice(targetPosition - 1, 0, list);
+                    lists.forEach((childList, i) => {
+                        listsByBoardRef
+                            .child(boardKey)
+                            .child(childList.key)
+                            .update({
+                                position: i + 1
+                            });
+                    });
+                    dom.removeChild(listMenuDOM);
+                },
+                onEditList: (name) => {
+                    listsByBoardRef
+                        .child(boardKey)
+                        .child(list.key)
+                        .update({
+                            name
+                        });
+                    dom.removeChild(listMenuDOM);
+                },
+                onDeleteList: () => {
+                    listsByBoardRef
+                        .child(boardKey)
+                        .child(list.key)
+                        .remove();
+
+                    cardsByListRef
+                        .child(list.key)
+                        .remove();
+
+                    boardsRef
+                        .child(boardKey)
+                        .update({
+                            listCount: lists.length - 1
+                        });
+
+                    listsByBoardRef
+                        .child(boardKey)
+                        .orderByChild('position')
+                        .once('value', snapshot => {
+                            const lists = [];
+                            snapshot.forEach(childList => {
+                                lists.push(childList.val());
+                            });
+
+                            lists.forEach((childList, i) => {
+                                listsByBoardRef
+                                    .child(boardKey)
+                                    .child(childList.key)
+                                    .update({
+                                        position: i + 1
+                                    });
+                            });
+                        });
+                    dom.removeChild(listMenuDOM);
+                }
+            });
+
+            const listMenuDOM = listMenu.render();
+
+            const menuButtons = listMenuDOM.querySelector('.menu-buttons');
+
+            menuButtons.style.left = viewportOffset.x + viewportOffset.width - 30 + 'px';
+            menuButtons.style.top = (viewportOffset.y + 30) + 'px';
+
+            dom.appendChild(listMenuDOM);
+        }
 
         function onCardMenuClick(card, list, viewportOffset, lists) {
             const cardMenu = new CardMenu({
@@ -32,7 +112,6 @@ class BoardApp extends Component {
                     dom.removeChild(cardMenuDOM);
                 },
                 onMoveCard: (targetList, targetPosition) => {
-                    console.log(targetList, targetPosition);
                     cardsByListRef
                         .child(list.key)
                         .child(card.key)
@@ -87,7 +166,7 @@ class BoardApp extends Component {
                                 .update({
                                     cardCount: cards.length
                                 });
-                                
+
                             dom.removeChild(cardMenuDOM);
                         });
 
@@ -97,9 +176,8 @@ class BoardApp extends Component {
                         .child(list.key)
                         .child(card.key)
                         .update({ content });
-                    
+
                     dom.removeChild(cardMenuDOM);
-                    board.update();
                 },
                 onDeleteCard: () => {
                     cardsByListRef
@@ -120,7 +198,6 @@ class BoardApp extends Component {
                                 });
                             });
                             dom.removeChild(cardMenuDOM);
-                            board.update();
                         });
                     listsByBoardRef.child(boardKey).child(list.key).update({
                         cardCount: list.cardCount - 1
@@ -134,7 +211,7 @@ class BoardApp extends Component {
 
             menuButtons.style.left = viewportOffset.x + 10 + viewportOffset.width + 'px';
             menuButtons.style.top = viewportOffset.y + 'px';
-            
+
             dom.appendChild(cardMenuDOM);
         }
 
@@ -145,14 +222,14 @@ class BoardApp extends Component {
                 snapshot.forEach(child => {
                     lists.push(child.val());
                 });
-                board.update({ board: boardInfo, lists, onCardMenuClick });
+                board.update({ board: boardInfo, lists, onCardMenuClick, onListMenuClick });
             });
 
         });
 
         dom.prepend(header.render());
         dom.appendChild(board.render());
-   
+
         return dom;
     }
 

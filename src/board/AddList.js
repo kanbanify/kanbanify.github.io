@@ -7,10 +7,15 @@ class AddList extends Component {
         const input = dom.querySelector('input');
 
         const onAddList = this.props.onAddList;
-        
+
         dom.addEventListener('submit', event => {
             event.preventDefault();
-            onAddList(input.value);
+
+            if(input.value.trim() === '') {
+                alert('please give a title to your list.');
+            } else {
+                onAddList(input.value);
+            }
             dom.reset();
         });
 

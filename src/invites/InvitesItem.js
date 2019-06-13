@@ -27,8 +27,8 @@ class InvitesItem extends Component {
 
         return /*html*/`
             <li class="invite-item">
-                <h2>${board.name}</h2>
-                <p>Invited by Jack McConnell</p>
+                <h2>${board.boardName}</h2>
+                <p>${board.from}</p>
                 <div class="button-container">
                     <button class="accept">accept</button>
                     <button class="decline">decline</button>

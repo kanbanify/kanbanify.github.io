@@ -1,4 +1,4 @@
-import Component from '../Component.js';
+import Component from '../../Component.js';
 
 class MovePositonOption extends Component {
 
@@ -11,7 +11,7 @@ class MovePositonOption extends Component {
             <option selected value=${position}>${position}</option>
         `;
         }
-        
+
         return /*html*/ `
             <option value=${position}>${position}</option>
         `;

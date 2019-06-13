@@ -12,7 +12,11 @@ class AddBoard extends Component {
         dom.addEventListener('submit', event => {
             event.preventDefault();
 
-            onAddBoard(input.value);
+            if(input.value.trim() === '') {
+                alert('Please add a title for your board.');
+            } else {
+                onAddBoard(input.value);
+            }
 
             dom.reset();
         });
@@ -22,9 +26,10 @@ class AddBoard extends Component {
 
     renderTemplate() {
         return /*html*/`
-            <form>
-                <input>
-                <button>Submit</button>
+            <form class="new-board">
+                <h2>Add a new board</h2>
+                <input placeholder="What shall you call the new board">
+                <button>Make New Board</button>
             </form>
         `;
     }

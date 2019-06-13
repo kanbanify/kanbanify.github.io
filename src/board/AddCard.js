@@ -11,7 +11,12 @@ class AddCard extends Component {
 
         form.addEventListener('submit', (event) => {
             event.preventDefault();
-            onAddCard(textArea.value);
+
+            if(textArea.value.trim() === '') {
+                alert('Please add content to your card.');
+            } else {
+                onAddCard(textArea.value);
+            }
             form.reset();
         });
 

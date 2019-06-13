@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 import EditCardMenu from './EditCardMenu.js';
-import MoveCardMenu from './MoveCardMenu.js';
+import MoveCardMenu from './MoveCard/MoveCardMenu.js';
 
 class CardMenu extends Component {
 

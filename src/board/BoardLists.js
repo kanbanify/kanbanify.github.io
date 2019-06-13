@@ -11,14 +11,16 @@ class BoardLists extends Component {
 
         const lists = this.props.lists;
         const board = this.props.board;
+
         const onCardMenuClick = this.props.onCardMenuClick;
+        const onListMenuClick = this.props.onListMenuClick;
 
         if(!lists) {
             return dom;
         }
 
         lists.forEach(list => {
-            const boardList = new BoardList({ list, board, onCardMenuClick, lists });
+            const boardList = new BoardList({ list, lists, board, onCardMenuClick, onListMenuClick });
             dom.appendChild(boardList.render());
         });
 
@@ -32,7 +34,7 @@ class BoardLists extends Component {
                     name: list,
                     cardCount: 0
                 });
-                
+
                 boardsRef.child(board.key).update({
                     listCount: board.listCount + 1
                 });
