@@ -13,9 +13,8 @@ class BoardsList extends Component {
 
         return dom;
     }
-
     renderTemplate() {
-        return /*html*/`
+        return /*html*/ `
             <ul></ul>
         `;
     }
