@@ -1,12 +1,23 @@
 import Component from '../Component.js';
 import BoardsHeader from './BoardsHeader.js';
 import BoardsList from './BoardsList.js';
+import { auth } from '../services/firebase.js';
 
 class BoardsSection extends Component {
     render() {
         const dom = this.renderDOM();
 
         const boards = this.props.boards;
+        const collaborativeBoards = [];
+        const personalBoards = [];
+
+        boards.forEach(board => {
+            if(board.owner === auth.currentUser.uid){
+                personalBoards.push(board);
+            } else {
+                collaborativeBoards.push(board);
+            }
+        });
 
         const ownerCondition = '(board.owner === (auth.currentUser.uid))';
         const notOwnerCondition = '(board.owner !== (auth.currentUser.uid))';
