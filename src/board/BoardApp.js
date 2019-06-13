@@ -2,7 +2,7 @@ import Component from '../Component.js';
 import Header from '../shared/Header.js';
 import Board from './Board.js';
 import CardMenu from './CardMenu.js';
-import MessagesContainer from './MessagesContainer.js';
+import MessagesContainer from './chat/MessagesContainer.js';
 
 import QUERY from '../utils/QUERY.js';
 
