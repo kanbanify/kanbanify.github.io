@@ -24,7 +24,7 @@ class AddList extends Component {
 
     renderTemplate() {
         return /*html*/`
-            <form>
+            <form class="add-list">
                 <input>
                 <button>Add List</button>
             </form>

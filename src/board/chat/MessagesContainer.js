@@ -45,6 +45,7 @@ class MessagesContainer extends Component {
             expandMessages: () => {
                 if(messageContainer.classList.contains('hidden')) {
                     messageContainer.classList.remove('hidden');
+                    dom.style.height = '50px';
                 } else {
                     messageContainer.classList.add('hidden');
                 }

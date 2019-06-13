@@ -1,5 +1,8 @@
 .board-lists {
     display: flex;
+    /* overflow: scroll; */
     list-style: none;
-    padding: 0px;
+    padding-left: 10px;
+    height: 80vh;
+    margin: 0;
 }
