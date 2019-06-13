@@ -1,4 +1,4 @@
-import Component from '../Component.js';
+import Component from '../../Component.js';
 import MovePositionOption from './MovePositionOption.js';
 
 class MovePositionSelect extends Component {
@@ -19,10 +19,10 @@ class MovePositionSelect extends Component {
             const positionOption = new MovePositionOption({ position: list.cardCount + 1, card });
             dom.appendChild(positionOption.render());
         }
-        
+
         return dom;
     }
-    
+
     renderTemplate() {
         return /*html*/ `
             <select name="move-position-select"></select>
