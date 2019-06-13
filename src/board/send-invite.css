@@ -8,21 +8,24 @@
     position: absolute;
     right: 15px;
     top: 0;
-    border: 2px solid white;
+    border: 3px solid rgba(255, 255, 255, 0.493);
     border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.199);
+    -webkit-transition: opacity 1000ms linear;
+    transition: opacity 1000ms linear;
 }
 
 .expand-button {
     background: transparent;
     outline: none;
-    border: none;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     cursor: pointer;
     background: #5b5b5b57;
-    border-radius: 10px 10px 0 0;
+    border-radius: 7px 7px 0 0;
+    border: none;
     transition: .75s;
-    width: 100%;
+    min-width: 100%;
 }
 
 .expand-button:hover {
@@ -41,12 +44,18 @@
 }
 
 .invite-input {
-    width: 70%;
-    border-radius: 0 0 0 3px;
+    min-width: 70%;
+    border-radius: 0 0 0 7px;   
     border: none;
     animation: fadein 1s steps(60);
     outline: none;
     padding-left: 10px;
+    background: rgb(87, 87, 87);
+    color: white;
+}
+
+.invite-input::placeholder {
+    color: rgba(255, 255, 255, 0.447);
 }
 
 .send-invite form {
@@ -55,22 +64,25 @@
 }
 
 .send-button {
+    height: 35px;
     width: 30%;
     border: none;
     outline: none;
-    border-radius: 0 0 10px 0;
-    border: 3px solid #5b5b5b57;
+    border-radius: 0 0 7px 0;
     animation: fadein 1s steps(60);
-    background: rgba(255, 255, 255, 0.226);
-    color: white;
-    transition: .75s;
+    background: rgb(242, 242, 242);
+    transition: 1s;
     cursor: pointer;
+    padding: 0;
+    font-weight: bolder;
+    font-size: 10px;
+    color: #222222b0;
 }
 
 .send-button:hover {
-    transition: .75s;
-    color: rgba(0, 0, 0, 0.534);
-    background: rgba(255, 255, 255, 0.6);
+    transition: .5s; 
+    color: white;
+    background: rgba(123, 123, 123, 0.603);
 }
 
 @keyframes fadein {

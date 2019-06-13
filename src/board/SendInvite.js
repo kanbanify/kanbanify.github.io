@@ -8,14 +8,13 @@ class SendInvite extends Component {
         const form = dom.querySelector('form');
         const input = dom.querySelector('input');
         const sendButton = dom.querySelector('.send-button');
-
-
         const onSendInvite = this.props.onSendInvite;
 
         form.addEventListener('submit', event => {
             event.preventDefault();
             onSendInvite(input.value);
-            dom.reset();
+            input.classList.add('hidden');
+            sendButton.classList.add('hidden');
         });
 
         expandButton.addEventListener('click', () => {
