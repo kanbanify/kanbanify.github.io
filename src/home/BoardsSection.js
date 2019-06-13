@@ -32,11 +32,11 @@ class BoardsSection extends Component {
         });
 
         const boardsListPersonal = new BoardsList({
-            boards,
+            boards: personalBoards,
             condition: ownerCondition
         });
         const boardsListCollaborative = new BoardsList({
-            boards,
+            boards: collaborativeBoards,
             condition: notOwnerCondition
         });
 
