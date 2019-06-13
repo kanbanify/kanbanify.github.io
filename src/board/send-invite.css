@@ -1,0 +1,79 @@
+.board {
+    position: relative;
+}
+
+.send-invite {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 15px;
+    top: 0;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.expand-button {
+    background: transparent;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: #5b5b5b57;
+    border-radius: 10px 10px 0 0;
+    transition: .75s;
+    width: 100%;
+}
+
+.expand-button:hover {
+    background: #9898987a;
+    transition: .75s;
+}
+
+.expand-button p {
+    color: white;
+    font-size: 1em;
+    margin: 10px;
+}
+
+.expand-button img {
+    width: 20px;
+}
+
+.invite-input {
+    width: 70%;
+    border-radius: 0 0 0 3px;
+    border: none;
+    animation: fadein 1s steps(60);
+    outline: none;
+    padding-left: 10px;
+}
+
+.send-invite form {
+    display: flex;
+    justify-content: center;
+}
+
+.send-button {
+    width: 30%;
+    border: none;
+    outline: none;
+    border-radius: 0 0 10px 0;
+    border: 3px solid #5b5b5b57;
+    animation: fadein 1s steps(60);
+    background: rgba(255, 255, 255, 0.226);
+    color: white;
+    transition: .75s;
+    cursor: pointer;
+}
+
+.send-button:hover {
+    transition: .75s;
+    color: rgba(0, 0, 0, 0.534);
+    background: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes fadein {
+    0% { opacity: 0 }
+    100% { opacity: 100% }
+}
