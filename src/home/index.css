@@ -1,5 +1,5 @@
 .whole-page {
-    max-width: 80vw;
+    max-width: 1000px;
     margin: auto;
 }
 
@@ -25,7 +25,7 @@ ul {
 .new-board input {
     outline: none;
     justify-content: center;
-    width: 70vw;
+    width: 90%;
     background: #5B5B5B;
     border: none;
     border-radius: 5px;
