@@ -1,0 +1,14 @@
+.board-header {
+    padding-left: 10px;
+    color: white;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.671);
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.board-header h3 {
+    margin: 0;
+    padding: 0;
+}
