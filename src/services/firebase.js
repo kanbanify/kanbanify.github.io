@@ -15,7 +15,7 @@ export const db = firebase.database();
 
 export const usersRef = db.ref('users');
 export const boardsRef = db.ref('boards');
-// export const invitesRef = db.ref('invites');
+export const invitesRef = db.ref('invites');
 export const boardsByUserRef = db.ref('boardsByUser');
 export const usersByBoardRef = db.ref('usersByBoard');
 export const invitesByUserRef = db.ref('invitesByUser');
