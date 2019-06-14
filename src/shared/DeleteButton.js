@@ -14,9 +14,7 @@ class DeleteButton extends Component {
     render() {
         const dom = this.renderDOM();
 
-        const board = this.props.board; // whole board object
-
-
+        const board = this.props.board;
 
         dom.addEventListener('click', () => {
             listsByBoardRef.child(board.key).once('value', snapshot => {
@@ -35,16 +33,23 @@ class DeleteButton extends Component {
                     boardsByUserRef.child(userKey).child(board.key).remove();
                 });
             });
-            invitesRef.child(board.key).remove();
-            invitesByUserRef.once('value', snapshot => {
-                snapshot.forEach(childList => {
-                    const userKey = childList.key;
+            
+            invitesRef.orderByChild('boardKey').equalTo(board.key).once('value', snapshot => {
+                const value = snapshot.val();
+                const invites = value ? Object.values(value) : [];
 
-                    invitesByUserRef.child(userKey).child(board.key).remove();
+                invites.forEach(invite => {
+                    invitesByUserRef.once('value', snapshot => {
+                        snapshot.forEach(childList => {
+                            const userKey = childList.key;
+                            invitesByUserRef.child(userKey).child(invite.key).remove();
+                        });
+                    });
+                    invitesRef.child(invite.key).remove();
                 });
             });
-            boardsRef.child(board.key).remove();
-
+            
+            boardsRef.child(board.key).remove();    
         });
 
         return dom;
