@@ -44,7 +44,7 @@ class Header extends Component {
                             </div>
                         </li>
                     </a>
-                    <a href="./index.html">
+                    <a href="./about.html">
                         <li class="about">about us</li>
                     </a>
                 </ul>
