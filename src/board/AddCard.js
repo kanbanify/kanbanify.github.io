@@ -25,9 +25,9 @@ class AddCard extends Component {
 
     renderTemplate() {
         return /*html*/`
-            <li>
+            <li class="add-card">
                 <form>
-                    <textarea></textarea>
+                    <textarea placeholder="Add card content..."></textarea>
                     <button>Add card</button>
                 </form>
             </li>

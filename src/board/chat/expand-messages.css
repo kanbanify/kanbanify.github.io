@@ -1,0 +1,23 @@
+div.button-container {
+    position: absolute;
+    height: 100%;
+}
+
+.expand-messages-button {
+    width: 50px;
+    height: 40px;
+    background: rgb(103, 103, 103);
+    position: absolute;
+    bottom: -40px;
+    border: 2   px solid white;
+    right: 0;
+    border-radius: 0 0 7px 7px;
+    z-index: 2;
+    outline: none;
+    padding: 0;
+}
+
+.expand-messages-button img {
+    padding-top: 2px;
+    width: 25px;
+}

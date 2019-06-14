@@ -2,11 +2,12 @@ import Component from '../Component.js';
 import Header from '../shared/Header.js';
 import Board from './Board.js';
 import CardMenu from './CardMenu.js';
+import MessagesContainer from './chat/MessagesContainer.js';
 import ListMenu from './ListMenu.js';
 
 import QUERY from '../utils/QUERY.js';
 
-import { boardsRef, listsByBoardRef, cardsByListRef } from '../services/firebase.js';
+import { auth, boardsRef, listsByBoardRef, cardsByListRef, boardsByUserRef } from '../services/firebase.js';
 
 class BoardApp extends Component {
 
@@ -18,6 +19,10 @@ class BoardApp extends Component {
         const header = new Header();
 
         const board = new Board({});
+
+
+        const messagesContainer = new MessagesContainer({ boardKey });
+        dom.appendChild(messagesContainer.render());
 
         function onListMenuClick(list, lists, board, viewportOffset) {
             const listMenu = new ListMenu({
@@ -91,7 +96,7 @@ class BoardApp extends Component {
 
             const menuButtons = listMenuDOM.querySelector('.menu-buttons');
 
-            menuButtons.style.left = viewportOffset.x + viewportOffset.width - 30 + 'px';
+            menuButtons.style.left = viewportOffset.x + viewportOffset.width + 'px';
             menuButtons.style.top = (viewportOffset.y + 30) + 'px';
 
             dom.appendChild(listMenuDOM);
@@ -210,17 +215,29 @@ class BoardApp extends Component {
             dom.appendChild(cardMenuDOM);
         }
 
-        boardsRef.child(boardKey).on('value', snapshot => {
-            const boardInfo = snapshot.val();
-            listsByBoardRef.child(boardInfo.key).orderByChild('position').on('value', snapshot => {
-                const lists = [];
-                snapshot.forEach(child => {
-                    lists.push(child.val());
+        boardsByUserRef
+            .child(auth.currentUser.uid)
+            .once('value', snapshot => {
+                const value = snapshot.val();
+                const boards = value ? Object.keys(value) : [];
+                if(!boards.includes(boardKey)) {
+                    window.location = './';
+                }
+            })
+            .then(() => {
+                boardsRef.child(boardKey).on('value', snapshot => {
+                    const boardInfo = snapshot.val();
+                    listsByBoardRef.child(boardInfo.key).orderByChild('position').on('value', snapshot => {
+                        const lists = [];
+                        snapshot.forEach(child => {
+                            lists.push(child.val());
+                        });
+                        board.update({ board: boardInfo, lists, onCardMenuClick, onListMenuClick });
+                    });
                 });
-                board.update({ board: boardInfo, lists, onCardMenuClick, onListMenuClick });
             });
 
-        });
+
 
         dom.prepend(header.render());
         dom.appendChild(board.render());

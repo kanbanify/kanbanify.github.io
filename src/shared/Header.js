@@ -1,7 +1,8 @@
 import Component from '../Component.js';
 import Profile from './Profile.js';
+import InviteCount from './InviteCount.js';
 
-import { auth } from '../services/firebase.js';
+import { auth, invitesByUserRef } from '../services/firebase.js';
 
 class Header extends Component {
 
@@ -22,6 +23,22 @@ class Header extends Component {
             dom.appendChild(profile.render());
         });
 
+        if(!auth.currentUser) {
+            return dom;
+        }
+
+        const inviteCount = new InviteCount({ numOfInvites: 0 });
+        invites.appendChild(inviteCount.render());
+
+        invitesByUserRef
+            .child(auth.currentUser.uid)
+            .on('value', snapshot => {
+                const value = snapshot.val();
+                const numOfInvites = value ? Object.values(value).length : 0;
+                inviteCount.update({ numOfInvites });
+            });
+
+
         return dom;
     }
 
@@ -39,12 +56,10 @@ class Header extends Component {
                         <li class="invites">
                             invitations
                             <img class="invites-envelope" src='/assets/envelope.png'>
-                            <div class="invites-count">
-                                <p>1</p>
-                            </div>
+
                         </li>
                     </a>
-                    <a href="./index.html">
+                    <a href="./about.html">
                         <li class="about">about us</li>
                     </a>
                 </ul>

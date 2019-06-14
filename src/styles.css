@@ -13,4 +13,6 @@ body {
 
 .hidden {
     display: none;
+    transition: 1s opacity;
+    z-index: -5;
 }
