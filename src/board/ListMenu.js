@@ -47,6 +47,8 @@ class ListMenu extends Component {
         });
 
         moveButton.addEventListener('click', () => {
+            moveListMenuDOM.style.top = viewportOffset.y + 110 + 'px';
+            moveListMenuDOM.style.left = viewportOffset.x + 250 + 'px';
             dom.appendChild(moveListMenuDOM);
         });
 
