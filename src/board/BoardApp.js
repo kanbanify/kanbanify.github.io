@@ -7,7 +7,7 @@ import ListMenu from './ListMenu.js';
 
 import QUERY from '../utils/QUERY.js';
 
-import { boardsRef, listsByBoardRef, cardsByListRef } from '../services/firebase.js';
+import { auth, boardsRef, listsByBoardRef, cardsByListRef, boardsByUserRef } from '../services/firebase.js';
 
 class BoardApp extends Component {
 
@@ -215,17 +215,29 @@ class BoardApp extends Component {
             dom.appendChild(cardMenuDOM);
         }
 
-        boardsRef.child(boardKey).on('value', snapshot => {
-            const boardInfo = snapshot.val();
-            listsByBoardRef.child(boardInfo.key).orderByChild('position').on('value', snapshot => {
-                const lists = [];
-                snapshot.forEach(child => {
-                    lists.push(child.val());
+        boardsByUserRef
+            .child(auth.currentUser.uid)
+            .once('value', snapshot => {
+                const value = snapshot.val();
+                const boards = value ? Object.keys(value) : [];
+                if(!boards.includes(boardKey)) {
+                    window.location = './';
+                }
+            })
+            .then(() => {
+                boardsRef.child(boardKey).on('value', snapshot => {
+                    const boardInfo = snapshot.val();
+                    listsByBoardRef.child(boardInfo.key).orderByChild('position').on('value', snapshot => {
+                        const lists = [];
+                        snapshot.forEach(child => {
+                            lists.push(child.val());
+                        });
+                        board.update({ board: boardInfo, lists, onCardMenuClick, onListMenuClick });
+                    });
                 });
-                board.update({ board: boardInfo, lists, onCardMenuClick, onListMenuClick });
             });
 
-        });
+
 
         dom.prepend(header.render());
         dom.appendChild(board.render());
