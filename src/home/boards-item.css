@@ -9,10 +9,14 @@
     margin: 6px;
     padding: 0px 10px;
     min-width: 200px;
+    transition: .5s;
+    position: relative;
+}
+
+.board-link {
     color: rgb(255, 255, 255);
     text-decoration: none;
     list-style: none;
-    transition: .5s;
 }
 
 .board-item:hover {
@@ -23,4 +27,23 @@
 
 .board-item li {
     text-align: center;
+}
+
+.delete-button {
+    position: absolute;
+    top: -7px;
+    right: 1px;
+    border: none;
+    background: none;
+    color: rgba(224, 109, 109, 0.726);
+    font-size: 1.6em;
+    padding: none;
+    padding: 0 0 0 0;
+    outline: none;
+}
+
+.delete-button:hover {
+    transform: scale(1.25);
+    color: rgb(253, 107, 107);
+    transition: .3s;
 }
