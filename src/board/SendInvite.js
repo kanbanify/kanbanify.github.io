@@ -18,8 +18,13 @@ class SendInvite extends Component {
         });
 
         expandButton.addEventListener('click', () => {
-            input.classList.remove('hidden');
-            sendButton.classList.remove('hidden');
+            if(input.classList.contains('hidden')) {
+                input.classList.remove('hidden');
+                sendButton.classList.remove('hidden');
+            } else {
+                input.classList.add('hidden');
+                sendButton.classList.add('hidden');
+            }
         });
 
 
