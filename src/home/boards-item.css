@@ -9,11 +9,7 @@
     margin: 6px;
     padding: 0px 10px;
     min-width: 200px;
-    transition: .5s;
-    position: relative;
-}
-
-.board-link {
+    max-width: 220px;
     color: rgb(255, 255, 255);
     text-decoration: none;
     list-style: none;

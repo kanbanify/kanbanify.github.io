@@ -60,6 +60,8 @@
 .send-invite form {
     display: flex;
     justify-content: center;
+    background: rgb(103, 103, 103);
+    border-radius: 0px 0px 7px 7px;
 }
 
 .send-button {

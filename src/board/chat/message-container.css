@@ -1,9 +1,9 @@
 .chat-container {
-    height: 50vh;
-    min-height: 30vh;
+    height: 30vw;
+    min-height: 220px;
     width: 20vw;
     position: absolute;
-    bottom: 60px;
+    bottom: 20px;
     right: 20px;
     flex-wrap: wrap;
     align-items: center;
@@ -11,11 +11,10 @@
     border-radius: 10px;
     display: flex;
     z-index: 5;
+    overflow-y: hidden;
 }   
 
 .message-container {
-    background: gray;
-    border: 1px solid white;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.459);
     height: 90%;
     border-radius: 10px 10px 0 10px;
