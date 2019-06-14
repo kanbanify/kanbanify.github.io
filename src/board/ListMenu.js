@@ -13,8 +13,6 @@ class ListMenu extends Component {
         const onMoveList = this.props.onMoveList;
         const viewportOffset = this.props.viewportOffset;
 
-        console.log(viewportOffset);
-
         const list = this.props.list;
         const board = this.props.board;
 
