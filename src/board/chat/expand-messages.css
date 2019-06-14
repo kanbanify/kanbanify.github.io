@@ -8,8 +8,8 @@ div.button-container {
     height: 40px;
     background: rgb(103, 103, 103);
     position: absolute;
-    bottom: -42px;
-    border: 1px solid white;
+    bottom: -40px;
+    border: 2   px solid white;
     right: 0;
     border-radius: 0 0 7px 7px;
     z-index: 2;
