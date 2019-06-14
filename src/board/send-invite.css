@@ -3,29 +3,34 @@
 }
 
 .send-invite {
-    padding: 0;
-    margin: 0;
     position: absolute;
-    right: 15px;
-    top: 0;
+    right: 5px;
+    top: 5px;
+    padding: 0;
     border: 3px solid rgba(255, 255, 255, 0.493);
     border-radius: 10px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.199);
     -webkit-transition: opacity 1000ms linear;
     transition: opacity 1000ms linear;
+    z-index: 5;
+    background: rgb(103, 103, 103);
 }
 
 .expand-button {
+    height: 20px;
+    border-radius: 5px;
+    display: flex;
     background: transparent;
     outline: none;
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
     align-items: center;
     cursor: pointer;
-    background: #5b5b5b57;
-    border-radius: 7px 7px 0 0;
+    background: rgb(103, 103, 103);
+    border-radius: 7px;
     border: none;
     transition: .75s;
-    min-width: 100%;
+    min-width: 200px;
 }
 
 .expand-button:hover {
@@ -36,7 +41,7 @@
 .expand-button p {
     color: white;
     font-size: 1em;
-    margin: 10px;
+    margin: 0;
 }
 
 .expand-button img {
@@ -47,15 +52,9 @@
     min-width: 70%;
     border-radius: 0 0 0 7px;   
     border: none;
-    animation: fadein 1s steps(60);
     outline: none;
-    padding-left: 10px;
-    background: rgb(87, 87, 87);
-    color: white;
-}
-
-.invite-input::placeholder {
-    color: rgba(255, 255, 255, 0.447);
+    padding: 0 0 0 10px;
+    height: 30px;
 }
 
 .send-invite form {
@@ -64,12 +63,11 @@
 }
 
 .send-button {
-    height: 35px;
+    height: 30px;
     width: 30%;
     border: none;
     outline: none;
     border-radius: 0 0 7px 0;
-    animation: fadein 1s steps(60);
     background: rgb(242, 242, 242);
     transition: 1s;
     cursor: pointer;
@@ -82,7 +80,7 @@
 .send-button:hover {
     transition: .5s; 
     color: white;
-    background: rgba(123, 123, 123, 0.603);
+    background: rgba(123, 123, 123);
 }
 
 @keyframes fadein {

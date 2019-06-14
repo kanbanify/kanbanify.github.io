@@ -2,6 +2,7 @@ import Component from '../Component.js';
 import Header from '../shared/Header.js';
 import Board from './Board.js';
 import CardMenu from './CardMenu.js';
+import MessagesContainer from './chat/MessagesContainer.js';
 import ListMenu from './ListMenu.js';
 
 import QUERY from '../utils/QUERY.js';
@@ -18,6 +19,10 @@ class BoardApp extends Component {
         const header = new Header();
 
         const board = new Board({});
+
+
+        const messagesContainer = new MessagesContainer({ boardKey });
+        dom.appendChild(messagesContainer.render());
 
         function onListMenuClick(list, lists, board, viewportOffset) {
             const listMenu = new ListMenu({
@@ -91,7 +96,7 @@ class BoardApp extends Component {
 
             const menuButtons = listMenuDOM.querySelector('.menu-buttons');
 
-            menuButtons.style.left = viewportOffset.x + viewportOffset.width - 30 + 'px';
+            menuButtons.style.left = viewportOffset.x + viewportOffset.width + 'px';
             menuButtons.style.top = (viewportOffset.y + 30) + 'px';
 
             dom.appendChild(listMenuDOM);

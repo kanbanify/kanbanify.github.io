@@ -14,7 +14,8 @@
   "globals": {
     "QUnit": false,
     "firebase": false,
-    "firebaseui": false
+    "firebaseui": false,
+    "moment": false
   },
   "rules": {
     "eqeqeq": ["error", "always"],

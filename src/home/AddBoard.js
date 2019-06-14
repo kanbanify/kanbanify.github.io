@@ -28,8 +28,8 @@ class AddBoard extends Component {
         return /*html*/`
             <form class="new-board">
                 <h2>Add a new board</h2>
-                <input placeholder="What shall you call the new board">
-                <button>Make New Board</button>
+                <input placeholder="Enter board title...">
+                <button>Submit</button>
             </form>
         `;
     }

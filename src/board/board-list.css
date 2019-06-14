@@ -1,17 +1,21 @@
 .board-list {
     width: 250px;
+    min-width: 250px;
     margin-right: 15px;
+    max-height: 80vh;
+    overflow: auto;
 }
 
 .list-section {
-    background: lightgray;
+    background: #464646;
     border-radius: 5px;
+    border: 2px solid rgba(128, 128, 128, 0.459);
 }
 
 .list-title {
     color: white;
     font-size: 1em;
-    background: rgb(187, 187, 187);
+    background: rgba(187, 187, 187, 0.226);
     border-radius: 5px 5px 0 0;
     margin: 0;
     padding: 3px 5px;
@@ -19,4 +23,28 @@
 
 .card-list {
     padding: 0;
+}
+
+.add-card form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-card textarea {
+    min-height: 30px;
+    width: 234px;
+    resize: vertical;
+    border-radius: 5px;
+    outline: none;
+}
+
+.add-card button {
+    border: 3px solid #00bff0;
+    border-radius: 3px;
+    background: rgba(187, 187, 187, 0.226);
+    color: white;
+    height: 25px;
+    margin: 3px;
+    align-self: flex-start;
 }

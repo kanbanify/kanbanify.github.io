@@ -16,8 +16,15 @@
     background: rgb(92, 92, 92);
     justify-content: center;
     align-items: center;
+    border-radius: 5px;
 }
 
 .edit-card-form button {
-    width: 50px;
+    border: 3px solid #00bff0;
+    border-radius: 3px;
+    background: rgba(187, 187, 187, 0.226);
+    color: white;
+    height: 25px;
+    margin: 3px;
+    align-self: flex-start;
 }

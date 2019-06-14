@@ -6,7 +6,7 @@ class CardMenu extends Component {
 
     render() {
         const dom = this.renderDOM();
-
+        
         const overlay = dom.querySelector('.overlay');
         const deleteButton = dom.querySelector('.delete');
         const editButton = dom.querySelector('.edit');
@@ -38,6 +38,8 @@ class CardMenu extends Component {
         });
 
         moveButton.addEventListener('click', () => {
+            moveCardMenuDOM.style.top = viewportOffset.y + 80 + 'px';
+            moveCardMenuDOM.style.left = viewportOffset.x + 250 + 'px';
             dom.appendChild(moveCardMenuDOM);
         });
 
