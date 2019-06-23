@@ -14,10 +14,10 @@ class AddBoard extends Component {
 
             if(input.value.trim() === '') {
                 alert('Please add a title for your board.');
-            } else {
-                onAddBoard(input.value);
+                return;
             }
 
+            onAddBoard(input.value);
             dom.reset();
         });
 

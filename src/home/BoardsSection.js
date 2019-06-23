@@ -8,16 +8,18 @@ class BoardsSection extends Component {
         const dom = this.renderDOM();
 
         const boards = this.props.boards;
-        const collaborativeBoards = [];
-        const personalBoards = [];
+        // consider a more functional approach
+        const uid = auth.currentUser.uid;
+        const personalBoards = boards.filter(board => board.owner === uid);
+        const collaborativeBoards = boards.filter(board => board.owner !== uid);
 
-        boards.forEach(board => {
-            if(board.owner === auth.currentUser.uid){
-                personalBoards.push(board);
-            } else {
-                collaborativeBoards.push(board);
-            }
-        });
+        // boards.forEach(board => {
+        //     if(board.owner === auth.currentUser.uid){
+        //         personalBoards.push(board);
+        //     } else {
+        //         collaborativeBoards.push(board);
+        //     }
+        // });
 
         const personalHeader = new BoardsHeader({
             title: 'Personal Boards',
